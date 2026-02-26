@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Rising Sprout — light background variant -->
+  <!-- Soil/base -->
+  <ellipse cx="32" cy="52" rx="14" ry="4" fill="#2D6A6A" opacity="0.2"/>
+  <!-- Stem -->
+  <path d="M32 50 C32 42, 30 36, 32 28" stroke="#2D6A6A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Left leaf -->
+  <path d="M32 38 C26 34, 20 30, 18 24 C22 24, 28 28, 32 34" fill="#2D6A6A" opacity="0.85"/>
+  <!-- Right leaf -->
+  <path d="M32 30 C38 26, 42 20, 44 14 C40 15, 36 20, 32 26" fill="#2D6A6A"/>
+  <!-- Small emerging leaf at top -->
+  <path d="M32 28 C30 22, 28 18, 26 14 C29 15, 31 20, 32 24" fill="#D4943A" opacity="0.9"/>
+</svg>

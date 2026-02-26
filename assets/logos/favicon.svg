@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Favicon — teal background -->
+  <rect width="32" height="32" rx="6" fill="#2D6A6A"/>
+  <!-- Stem -->
+  <path d="M16 26 C16 21, 15 18, 16 14" stroke="#FDF8F0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Left leaf -->
+  <path d="M16 19 C13 17, 10 15, 9 12 C11 12, 14 14, 16 17" fill="#FDF8F0" opacity="0.85"/>
+  <!-- Right leaf -->
+  <path d="M16 15 C19 13, 21 10, 22 7 C20 7.5, 18 10, 16 13" fill="#FDF8F0"/>
+  <!-- Gold accent leaf -->
+  <path d="M16 14 C15 11, 14 9, 13 7 C14.5 7.5, 15.5 10, 16 12" fill="#D4943A" opacity="0.9"/>
+</svg>
