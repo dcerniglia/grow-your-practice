@@ -8,7 +8,8 @@
 
 **Product**: A premium online course platform that teaches private practice therapists how to use AI tools to save time, improve client care, and grow their income.
 
-**Price**: $300 one-time purchase  
+**Brand Name**: Grow Your Practice (growyourpractice.ai)
+**Price**: $297 one-time purchase (Founding Member pricing)  
 **Target user**: Licensed therapists in private practice (LPC, LCSW, LMFT, PsyD) — smart professionals, generally not tech-savvy, often overwhelmed and time-poor.  
 **Design philosophy**: Calm, warm, trustworthy — with playful surprise moments at key milestones. Think "meditation app meets really good online course." Never techy, never intimidating.
 
@@ -504,7 +505,7 @@ app/
 2. Frontend calls `POST /api/stripe/create-checkout` with email
 3. Backend creates a Stripe Checkout Session (embedded mode) with:
    - `mode: 'payment'`
-   - `amount: 30000` (cents)
+   - `amount: 29700` (cents)
    - `currency: 'usd'`
    - `metadata: { email }`
 4. Frontend renders Stripe embedded checkout form
@@ -564,36 +565,43 @@ On `checkout.session.completed`:
 > Note: This is the planned module/lesson structure. Lesson content (markdown + videos) will be added after platform build.
 
 ### Module 1: "Your AI Foundation" (Gated: No — this is the entry point)
-- L1: What AI Actually Is (and Isn't) — demystify, no jargon
-- L2: Why Therapists Should Care Right Now
-- L3: AI Ethics & Client Safety — the most important lesson
-- L4: Setting Up Your AI Toolkit — practical, show every click
-- L5: Your First AI Conversation — guided exercise
+- L1: Your First AI Win — get a useful output in under 15 minutes
+- L2: What AI Actually Is (and Isn't) — demystify, no jargon
+- L3: Setting Up Your AI Toolkit — practical, show every click
+- L4: Your First Real Conversation with AI — guided exercise
+- L5: Building the Habit — integrating AI into your daily workflow
 
-### Module 2: "Save 10 Hours a Week" (Gated: Yes — requires Module 1)
-- L1: AI for Clinical Notes & Documentation
-- L2: AI for Insurance & Billing Language
-- L3: AI for Email & Client Communication
-- L4: AI for Scheduling & Admin
+### Module 2: "AI + HIPAA: The Truth" (Gated: Yes — requires Module 1)
+- L1: The Real Rules — HIPAA and AI in plain English
+- L2: De-identification Techniques — get AI's help without exposing PHI
+- L3: BAA-Ready Tools — which platforms are safe and which aren't
+- L4: The Ethical Decision Tree — evaluating any AI tool against your ethics code
+- L5: Your Compliance Checklist — a reference you'll use every time
+
+### Module 3: "Eliminate Your Admin Nightmare" (Gated: No — open after Module 1)
+- L1: AI for SOAP Notes & DAP Notes
+- L2: AI for Treatment Plans & Intake Forms
+- L3: AI for Insurance & Billing Language
+- L4: AI for Email & Client Communication
 - L5: Building Your Personal Prompt Library
 
-### Module 3: "Grow Your Client Base" (Gated: No — open after Module 1)
-- L1: AI-Assisted Website Copy That Attracts Clients
-- L2: Social Media Content Without the Burnout
-- L3: AI for SEO — Getting Found Online
-- L4: Writing a Newsletter Your Clients Actually Read
-- L5: AI for Psychology Today & Directory Profiles
+### Module 4: "Fill Your Practice" (Gated: No — open after Module 1)
+- L1: AI-Written Website Copy That Attracts Your Ideal Client
+- L2: Optimizing Your Psychology Today & Directory Profiles
+- L3: Social Media Content Without the Burnout
+- L4: AI for SEO — Getting Found Online
+- L5: Your 30-Day Marketing Plan, Ready to Go
 
-### Module 4: "Deepen Your Clinical Work" (Gated: No — open after Module 1)
-- L1: AI as a Research Assistant
-- L2: Treatment Planning with AI Support
-- L3: AI for Psychoeducation Materials
-- L4: AI for Group Therapy Prep
-- L5: When NOT to Use AI in Clinical Work
+### Module 5: "Build New Income Streams" (Gated: No — open after Module 1)
+- L1: Group Therapy Programs — Design and Market with AI
+- L2: Creating Online Courses & Workshops
+- L3: Digital Products — Workbooks, Guides, Templates
+- L4: AI for Psychoeducation Materials
+- L5: Mapping Your First Alternate Income Stream
 
-### Module 5: "Build Your AI-Powered Practice" (Gated: No — open after Module 1)
+### Module 6: "Your AI-Powered Practice" (Gated: No — open after Module 1)
 - L1: Putting It All Together — Your AI Workflow
-- L2: What's Coming Next in AI & Therapy
+- L2: Simple Automations & Ethical Guardrails
 - L3: Staying Current Without Getting Overwhelmed
 - L4: Your 30-Day Implementation Plan
 - L5: Final Reflection & Next Steps
