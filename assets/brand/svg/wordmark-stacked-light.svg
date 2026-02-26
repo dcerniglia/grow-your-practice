@@ -1,0 +1,11 @@
+<svg width="260" height="120" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(110, 0) scale(0.7)">
+    <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+    <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+    <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+    <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+  </g>
+  <text x="130" y="85" text-anchor="middle" font-family="'DM Serif Display', Georgia, serif" font-size="22" fill="#2D6A6A">growyourpractice<tspan fill="#D4943A">.ai</tspan></text>
+  <text x="130" y="108" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="10" fill="#64748B" letter-spacing="0.12em">AI TRAINING FOR THERAPISTS</text>
+</svg>

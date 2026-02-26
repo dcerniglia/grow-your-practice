@@ -1,0 +1,11 @@
+<svg width="380" height="48" viewBox="0 0 380 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 0) scale(0.6)">
+    <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+    <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+    <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+    <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+  </g>
+  <text x="56" y="32" font-family="'DM Serif Display', Georgia, serif" font-size="26" fill="#FDF8F0">growyourpractice</text>
+  <text x="312" y="32" font-family="'DM Serif Display', Georgia, serif" font-size="26" fill="#D4943A">.ai</text>
+</svg>
