@@ -112,6 +112,18 @@ model ResourceDownload {
   resource Resource @relation(fields: [resourceId], references: [id])
 }
 
+model Keyword {
+  id            String   @id @default(cuid())
+  keyword       String   @unique
+  monthlyVolume Int?
+  cpc           Float?
+  intentMatch   Boolean  @default(false)
+  notes         String?
+  category      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
 model DailySnapshot {
   id   String   @id @default(uuid())
   date DateTime @unique // midnight UTC of the snapshot day

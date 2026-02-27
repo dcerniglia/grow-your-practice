@@ -32,6 +32,7 @@ const navSections = [
     heading: 'Content',
     links: [
       { href: '/modules', label: 'Modules' },
+      { href: '/resources', label: 'Resources' },
       { href: '/users', label: 'Users' },
     ],
   },
@@ -43,6 +44,7 @@ const navSections = [
       { href: '/marketing/ads', label: 'Ads' },
       { href: '/marketing/sales', label: 'Sales' },
       { href: '/marketing/funnel', label: 'Funnel' },
+      { href: '/marketing/keywords', label: 'Keywords' },
     ],
   },
 ];
