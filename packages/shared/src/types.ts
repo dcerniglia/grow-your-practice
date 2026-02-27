@@ -64,6 +64,7 @@ export type KpiMetric = {
   deltaPercent?: number
   format?: 'currency' | 'percent' | 'number'
   sparklineData?: number[]
+  tooltip?: string
 }
 
 export type RevenueDataPoint = {

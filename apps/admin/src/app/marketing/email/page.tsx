@@ -60,10 +60,10 @@ export default function EmailPage() {
   }
 
   const defaultKpis: KpiMetric[] = [
-    { label: 'Subscribers', value: 0, format: 'number' },
-    { label: 'New Subscribers', value: 0, format: 'number' },
-    { label: 'Open Rate', value: 'N/A' },
-    { label: 'Click Rate', value: 'N/A' },
+    { label: 'Subscribers', value: 0, format: 'number', tooltip: 'Total active ConvertKit subscribers.' },
+    { label: 'New Subscribers', value: 0, format: 'number', tooltip: 'Subscribers added in this period.' },
+    { label: 'Open Rate', value: 'N/A', tooltip: 'Percent of delivered emails opened. Above 40% is strong for a niche list.' },
+    { label: 'Click Rate', value: 'N/A', tooltip: 'Percent of opened emails where a link was clicked. Measures content engagement.' },
   ];
 
   const kpis = data?.kpis ?? defaultKpis;
@@ -86,11 +86,11 @@ export default function EmailPage() {
         ))}
       </KpiCardGrid>
 
-      <ChartContainer title="Email Performance (Open Rate / Click Rate)" unavailable={unavailable}>
+      <ChartContainer title="Email Performance (Open Rate / Click Rate)" unavailable={unavailable} tooltip="Trends in open and click rates. Drops may signal deliverability issues or list fatigue.">
         <EmailPerformanceChart data={data?.growth ?? []} loading={loading} />
       </ChartContainer>
 
-      <ChartContainer title="Tag Breakdown" unavailable={unavailable}>
+      <ChartContainer title="Tag Breakdown" unavailable={unavailable} tooltip="Subscriber counts per ConvertKit tag. Tags track which lead magnet or sequence a subscriber came through.">
         {loading ? (
           <div className="flex h-48 items-center justify-center">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />

@@ -115,27 +115,27 @@ export default function TrafficPage() {
         <>
           <KpiCardGrid>
             <KpiCard
-              metric={metricsData?.visitors ?? { label: 'Visitors', value: 0, format: 'number' }}
+              metric={{ ...(metricsData?.visitors ?? { label: 'Visitors', value: 0, format: 'number' }), tooltip: 'Unique visitors from Plausible. Does not use cookies — counts are conservative.' }}
               loading={loading}
               unavailable={unavailable}
             />
             <KpiCard
-              metric={metricsData?.bounceRate ?? { label: 'Bounce Rate', value: 0, format: 'percent' }}
+              metric={{ ...(metricsData?.bounceRate ?? { label: 'Bounce Rate', value: 0, format: 'percent' }), tooltip: 'Percent of visitors who left without interacting. Below 50% is good for a landing page.' }}
               loading={loading}
               unavailable={unavailable}
             />
             <KpiCard
-              metric={signupRate}
+              metric={{ ...signupRate, tooltip: 'Average conversion rate across all landing page variants.' }}
               loading={loading}
               unavailable={unavailable}
             />
           </KpiCardGrid>
 
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <ChartContainer title="Traffic by Source">
+            <ChartContainer title="Traffic by Source" tooltip="Breakdown of where visitors come from. Use this to see which channels are worth investing in.">
               <TrafficSourcesChart data={sourcesData} loading={loading} />
             </ChartContainer>
-            <ChartContainer title="Variant Comparison (A/B/C)">
+            <ChartContainer title="Variant Comparison (A/B/C)" tooltip="Landing page A/B/C test. Pick the variant with the highest signup rate and promote it.">
               <VariantComparisonChart data={variantData} loading={loading} />
             </ChartContainer>
           </div>

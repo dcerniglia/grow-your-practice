@@ -90,23 +90,23 @@ export default function SalesPage() {
 
       <KpiCardGrid>
         <KpiCard
-          metric={metrics?.revenue ?? fallbackMetric('Revenue', 'currency')}
+          metric={{ ...(metrics?.revenue ?? fallbackMetric('Revenue', 'currency')), tooltip: 'Gross Stripe revenue after refunds.' }}
           loading={loading}
           unavailable={unavailable}
         />
         <KpiCard
-          metric={metrics?.purchases ?? fallbackMetric('Purchases', 'number')}
+          metric={{ ...(metrics?.purchases ?? fallbackMetric('Purchases', 'number')), tooltip: 'Total completed course purchases.' }}
           loading={loading}
           unavailable={unavailable}
         />
         <KpiCard
-          metric={metrics?.refundRate ?? fallbackMetric('Refund Rate', 'percent')}
+          metric={{ ...(metrics?.refundRate ?? fallbackMetric('Refund Rate', 'percent')), tooltip: 'Percent of purchases refunded. Below 5% is healthy.' }}
           loading={loading}
           unavailable={unavailable}
         />
       </KpiCardGrid>
 
-      <ChartContainer title="Revenue Over Time" unavailable={unavailable && !loading}>
+      <ChartContainer title="Revenue Over Time" unavailable={unavailable && !loading} tooltip="Daily revenue. Spikes often correlate with email sends or ad launches.">
         <RevenueChart data={series} loading={loading} />
       </ChartContainer>
     </div>

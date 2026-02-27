@@ -31,6 +31,7 @@ type SummaryResponse = {
     purchasedUsers: number;
     averageProgress: number;
     completionRate: number;
+    averageTimeToPurchase: number;
   }>;
 };
 
@@ -84,12 +85,13 @@ export default function FunnelPage() {
       const roas = adSpend > 0 ? revenue / adSpend : 0;
 
       setKpis([
-        { label: 'CPA', value: cpa, format: 'currency' },
-        { label: 'ROAS', value: roas, format: 'number' },
+        { label: 'CPA', value: cpa, format: 'currency', tooltip: 'Cost per acquisition. Ad spend divided by purchases. Must stay below $297 to be profitable.' },
+        { label: 'ROAS', value: roas, format: 'number', tooltip: 'Return on ad spend. Revenue per dollar of ads. Above 3x is healthy for a $297 product.' },
         {
           label: 'Completion Rate',
           value: data.database.status === 'ok' ? data.database.data.completionRate : 0,
           format: 'percent',
+          tooltip: 'Percent of purchasers who completed all lessons. High completion = high satisfaction.',
         },
       ]);
 
@@ -164,11 +166,11 @@ export default function FunnelPage() {
         ))}
       </KpiCardGrid>
 
-      <ChartContainer title="Full Funnel (Visitors → Signups → Purchases)">
+      <ChartContainer title="Full Funnel (Visitors → Signups → Purchases)" tooltip="Conversion funnel from visitor to purchase. Biggest drop-off = biggest opportunity.">
         <FunnelChart steps={funnelSteps} loading={loading} />
       </ChartContainer>
 
-      <ChartContainer title="Weekly Report">
+      <ChartContainer title="Weekly Report" tooltip="Snapshot of the week's key numbers across all channels.">
         <WeeklyReportCard data={reportData} loading={loading} />
       </ChartContainer>
     </div>

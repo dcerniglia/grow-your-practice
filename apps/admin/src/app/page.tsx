@@ -38,6 +38,7 @@ type SummaryData = {
     purchasedUsers: number;
     averageProgress: number;
     completionRate: number;
+    averageTimeToPurchase: number;
   }>;
 };
 
@@ -89,31 +90,53 @@ export default function AdminDashboard() {
   const signupsVal = emailKpis
     ? Number(emailKpis.find((k) => k.label === 'New Subscribers')?.value ?? 0)
     : 0;
+  const totalSubscribers = emailKpis
+    ? Number(emailKpis.find((k) => k.label === 'Subscribers')?.value ?? 0)
+    : 0;
+  const dbData = data?.database.status === 'ok' ? data.database.data : null;
 
   const kpis: { metric: KpiMetric; unavailable: boolean }[] = [
+    // Row 1
     {
-      metric: stripe?.revenue ?? { label: 'Total Revenue', value: 0, format: 'currency' },
+      metric: { ...(stripe?.revenue ?? { label: 'Total Revenue', value: 0, format: 'currency' }), tooltip: 'Gross revenue from Stripe after refunds. This is your top-line number.' },
       unavailable: !stripeOk,
     },
     {
-      metric: stripe?.purchases ?? { label: 'Purchases', value: 0, format: 'number' },
+      metric: { ...(stripe?.purchases ?? { label: 'Purchases', value: 0, format: 'number' }), tooltip: 'Total course purchases in this period.' },
       unavailable: !stripeOk,
     },
     {
-      metric: { label: 'CPA', value: purchaseVal > 0 ? adSpendVal / purchaseVal : 0, format: 'currency' },
+      metric: { label: 'CPA', value: purchaseVal > 0 ? adSpendVal / purchaseVal : 0, format: 'currency', tooltip: 'Cost per acquisition. Ad spend divided by purchases. Must stay below $297 to be profitable.' },
       unavailable: !stripeOk || !metaOk,
     },
     {
-      metric: emailKpis?.find((k) => k.label === 'Subscribers') ?? { label: 'Email Subscribers', value: 0, format: 'number' },
+      metric: { label: 'ROAS', value: adSpendVal > 0 ? revenueVal / adSpendVal : 0, format: 'number', tooltip: 'Return on ad spend. Revenue per dollar of ads. Above 3x is healthy for a $297 product.' },
+      unavailable: !stripeOk || !metaOk,
+    },
+    {
+      metric: { ...(ads?.spend ?? { label: 'Ad Spend', value: 0, format: 'currency' }), tooltip: 'Total Meta Ads spend in this period.' },
+      unavailable: !metaOk,
+    },
+    // Row 2
+    {
+      metric: { ...(emailKpis?.find((k) => k.label === 'Subscribers') ?? { label: 'Email Subscribers', value: 0, format: 'number' }), tooltip: 'Total ConvertKit subscribers. Your owned audience — not dependent on ad platforms.' },
       unavailable: !convertkitOk,
     },
     {
-      metric: { label: 'Signup Rate', value: visitorsVal > 0 ? (signupsVal / visitorsVal) * 100 : 0, format: 'percent' },
+      metric: { label: 'Signup Rate', value: visitorsVal > 0 ? (signupsVal / visitorsVal) * 100 : 0, format: 'percent', tooltip: 'Percent of visitors who subscribe. Measures how compelling your lead magnet is.' },
       unavailable: !plausibleOk || !convertkitOk,
     },
     {
-      metric: ads?.spend ?? { label: 'Ad Spend', value: 0, format: 'currency' },
-      unavailable: !metaOk,
+      metric: { label: 'CPL', value: signupsVal > 0 ? adSpendVal / signupsVal : 0, format: 'currency', tooltip: 'Cost per lead. What you pay in ads for each email subscriber. Lower is better.' },
+      unavailable: !metaOk || !convertkitOk,
+    },
+    {
+      metric: { label: 'Email→Purchase %', value: totalSubscribers > 0 ? (purchaseVal / totalSubscribers) * 100 : 0, format: 'percent', tooltip: 'Percent of your email list that purchased. Highest-leverage metric — more revenue with zero extra ad spend.' },
+      unavailable: !stripeOk || !convertkitOk,
+    },
+    {
+      metric: { label: 'Time to Purchase', value: dbData?.averageTimeToPurchase ?? 0, format: 'number', tooltip: 'Average days from signup to purchase. Tells you how long your nurture sequence needs to be.' },
+      unavailable: !dbData,
     },
   ];
 
@@ -151,24 +174,24 @@ export default function AdminDashboard() {
       </KpiCardGrid>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <ChartContainer title="Revenue Over Time" unavailable={!stripeOk && !loading}>
+        <ChartContainer title="Revenue Over Time" unavailable={!stripeOk && !loading} tooltip="Daily revenue trend. Look for patterns around email sends and ad campaigns.">
           <RevenueChart data={revSeries} loading={loading} />
         </ChartContainer>
-        <ChartContainer title="Funnel">
+        <ChartContainer title="Funnel" tooltip="Conversion funnel from visitor to purchase. Biggest drop-off = biggest opportunity.">
           <FunnelChart steps={funnelSteps} loading={loading} />
         </ChartContainer>
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <ChartContainer title="Landing Page Variants" unavailable={!plausibleOk && !loading}>
+        <ChartContainer title="Landing Page Variants" unavailable={!plausibleOk && !loading} tooltip="A/B/C test results. Higher conversion rate = better headline/copy combo.">
           <VariantComparisonChart data={variantsData} loading={loading} />
         </ChartContainer>
-        <ChartContainer title="Email Performance" unavailable={!convertkitOk && !loading}>
+        <ChartContainer title="Email Performance" unavailable={!convertkitOk && !loading} tooltip="Open and click rates over time. Declining rates may signal list fatigue.">
           <EmailPerformanceChart data={[]} loading={loading} />
         </ChartContainer>
       </div>
 
-      <ChartContainer title="Weekly Report">
+      <ChartContainer title="Weekly Report" tooltip="Snapshot of the week's key numbers across all channels.">
         <WeeklyReportCard
           data={
             !loading && (stripeOk || plausibleOk || convertkitOk || metaOk)

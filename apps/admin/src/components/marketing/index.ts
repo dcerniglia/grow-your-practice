@@ -9,3 +9,4 @@ export { VariantComparisonChart } from './VariantComparisonChart';
 export { CampaignTable } from './CampaignTable';
 export { FunnelChart } from './FunnelChart';
 export { WeeklyReportCard } from './WeeklyReportCard';
+export { Tooltip } from './Tooltip';

@@ -2,6 +2,7 @@
 
 import type { KpiMetric } from '@gyp/shared';
 import { Area, AreaChart, ResponsiveContainer } from 'recharts';
+import { Tooltip } from './Tooltip';
 
 function formatValue(value: string | number, format?: KpiMetric['format']): string {
   if (typeof value === 'string') return value;
@@ -36,7 +37,10 @@ export function KpiCard({ metric, loading, unavailable }: Props) {
   if (unavailable) {
     return (
       <div className="rounded-card border border-border bg-surface p-4 opacity-60">
-        <p className="text-xs text-text-muted">{metric.label}</p>
+        <p className="text-xs text-text-muted">
+        {metric.label}
+        {metric.tooltip && <Tooltip content={metric.tooltip} />}
+      </p>
         <p className="mt-1 text-sm text-text-muted">Not connected</p>
       </div>
     );
@@ -47,7 +51,10 @@ export function KpiCard({ metric, loading, unavailable }: Props) {
 
   return (
     <div className="rounded-card border border-border bg-surface p-4">
-      <p className="text-xs text-text-muted">{metric.label}</p>
+      <p className="text-xs text-text-muted">
+        {metric.label}
+        {metric.tooltip && <Tooltip content={metric.tooltip} />}
+      </p>
       <div className="mt-1 flex items-end gap-3">
         <p className="text-2xl font-semibold text-text">
           {formatValue(metric.value, metric.format)}
@@ -83,7 +90,7 @@ export function KpiCard({ metric, loading, unavailable }: Props) {
 
 export function KpiCardGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
       {children}
     </div>
   );

@@ -6,6 +6,7 @@ type DatabaseMetrics = {
   purchasedUsers: number;
   averageProgress: number;
   completionRate: number;
+  averageTimeToPurchase: number;
 };
 
 export async function getDatabaseMetrics(): Promise<ServiceResult<DatabaseMetrics>> {
@@ -17,12 +18,16 @@ export async function getDatabaseMetrics(): Promise<ServiceResult<DatabaseMetric
     const { PrismaClient } = await import('@gyp/database');
     const prisma = new PrismaClient();
 
-    const [totalUsers, purchasedUsers, progressRecords] = await Promise.all([
+    const [totalUsers, purchasedUsers, progressRecords, purchasedWithDates] = await Promise.all([
       prisma.user.count(),
       prisma.user.count({ where: { purchasedAt: { not: null } } }),
       prisma.lessonProgress.findMany({
         where: { completed: true },
         select: { userId: true },
+      }),
+      prisma.user.findMany({
+        where: { purchasedAt: { not: null } },
+        select: { createdAt: true, purchasedAt: true },
       }),
     ]);
 
@@ -45,11 +50,21 @@ export async function getDatabaseMetrics(): Promise<ServiceResult<DatabaseMetric
       completionRate = (completedUsers / purchasedUsers) * 100;
     }
 
+    let averageTimeToPurchase = 0;
+    if (purchasedWithDates.length > 0) {
+      const totalDays = purchasedWithDates.reduce((sum, u) => {
+        const diff = (u.purchasedAt!.getTime() - u.createdAt.getTime()) / (1000 * 60 * 60 * 24);
+        return sum + Math.max(0, diff);
+      }, 0);
+      averageTimeToPurchase = Math.round((totalDays / purchasedWithDates.length) * 10) / 10;
+    }
+
     const data: DatabaseMetrics = {
       totalUsers,
       purchasedUsers,
       averageProgress,
       completionRate,
+      averageTimeToPurchase,
     };
 
     setCache(cacheKey, data, TTL.DATABASE);

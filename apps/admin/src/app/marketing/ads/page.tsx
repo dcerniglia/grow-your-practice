@@ -82,12 +82,12 @@ export default function AdsPage() {
       </div>
 
       <KpiCardGrid>
-        <KpiCard metric={metrics.spend} loading={loading} unavailable={unavailable} />
-        <KpiCard metric={metrics.ctr} loading={loading} unavailable={unavailable} />
-        <KpiCard metric={metrics.cpc} loading={loading} unavailable={unavailable} />
+        <KpiCard metric={{ ...metrics.spend, tooltip: 'Total Meta Ads spend in this period.' }} loading={loading} unavailable={unavailable} />
+        <KpiCard metric={{ ...metrics.ctr, tooltip: 'Click-through rate. Percent of impressions that became clicks. Above 1% is solid for cold traffic.' }} loading={loading} unavailable={unavailable} />
+        <KpiCard metric={{ ...metrics.cpc, tooltip: 'Cost per click. What you pay for each ad click. Lower means more efficient creative.' }} loading={loading} unavailable={unavailable} />
       </KpiCardGrid>
 
-      <ChartContainer title="Campaign Performance" unavailable={unavailable}>
+      <ChartContainer title="Campaign Performance" unavailable={unavailable} tooltip="Per-campaign breakdown of spend, clicks, and conversions. Pause underperformers, scale winners.">
         {!unavailable && (
           <CampaignTable campaigns={campaigns} loading={loading} />
         )}
