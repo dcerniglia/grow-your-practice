@@ -3,25 +3,46 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
 import type { SidebarModule } from '@gyp/shared'
 
 function ChevronIcon({ expanded }: { expanded: boolean }) {
   return (
-    <svg
-      className={`h-4 w-4 shrink-0 text-text-muted transition-transform duration-200 ${expanded ? 'rotate-90' : ''}`}
+    <motion.svg
+      className="h-4 w-4 shrink-0 text-text-muted"
       viewBox="0 0 20 20"
       fill="currentColor"
+      animate={{ rotate: expanded ? 90 : 0 }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
     >
       <path
         fillRule="evenodd"
         d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
         clipRule="evenodd"
       />
-    </svg>
+    </motion.svg>
   )
 }
 
-function CheckCircleIcon() {
+function CheckCircleIcon({ animated }: { animated?: boolean }) {
+  if (animated) {
+    return (
+      <motion.svg
+        className="h-4 w-4 shrink-0 text-primary"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        initial={{ scale: 0 }}
+        animate={{ scale: [0, 1.3, 1] }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+      >
+        <path
+          fillRule="evenodd"
+          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+          clipRule="evenodd"
+        />
+      </motion.svg>
+    )
+  }
   return (
     <svg className="h-4 w-4 shrink-0 text-primary" viewBox="0 0 20 20" fill="currentColor">
       <path
@@ -60,7 +81,6 @@ function ProfileIcon() {
 export function Sidebar({ modules }: { modules: SidebarModule[] }) {
   const pathname = usePathname()
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>(() => {
-    // Auto-expand the module that contains the current lesson
     const initial: Record<string, boolean> = {}
     for (const mod of modules) {
       const hasActiveLesson = mod.lessons.some(
@@ -88,7 +108,7 @@ export function Sidebar({ modules }: { modules: SidebarModule[] }) {
 
       {/* Module/lesson tree */}
       <nav className="flex-1 overflow-y-auto py-2">
-        {modules.map((mod) => {
+        {modules.map((mod, modIndex) => {
           const isExpanded = expandedModules[mod.id] ?? false
           const isModuleActive = pathname === `/modules/${mod.slug}`
           const completedCount = mod.lessons.filter((l) => l.completed).length
@@ -96,7 +116,12 @@ export function Sidebar({ modules }: { modules: SidebarModule[] }) {
           const allComplete = completedCount === totalCount && totalCount > 0
 
           return (
-            <div key={mod.id}>
+            <motion.div
+              key={mod.id}
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: modIndex * 0.05 }}
+            >
               {/* Module header */}
               <button
                 onClick={() => toggleModule(mod.id)}
@@ -117,30 +142,48 @@ export function Sidebar({ modules }: { modules: SidebarModule[] }) {
               </button>
 
               {/* Lesson list */}
-              <div
-                className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
-              >
-                {mod.lessons.map((lesson) => {
-                  const lessonPath = `/modules/${mod.slug}/${lesson.slug}`
-                  const isActive = pathname === lessonPath
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="overflow-hidden"
+                  >
+                    {mod.lessons.map((lesson, lessonIndex) => {
+                      const lessonPath = `/modules/${mod.slug}/${lesson.slug}`
+                      const isActive = pathname === lessonPath
 
-                  return (
-                    <Link
-                      key={lesson.id}
-                      href={lessonPath}
-                      className={`flex items-center gap-2.5 py-2 pl-10 pr-5 text-sm transition-colors duration-150 ${
-                        isActive
-                          ? 'border-l-2 border-primary bg-primary/10 pl-[38px] text-primary-dark'
-                          : 'text-text-muted hover:bg-background hover:text-text'
-                      }`}
-                    >
-                      {lesson.completed ? <CheckCircleIcon /> : <EmptyCircleIcon />}
-                      <span className="leading-snug">{lesson.title}</span>
-                    </Link>
-                  )
-                })}
-              </div>
-            </div>
+                      return (
+                        <motion.div
+                          key={lesson.id}
+                          initial={{ opacity: 0, x: -6 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.2, delay: lessonIndex * 0.04 }}
+                        >
+                          <Link
+                            href={lessonPath}
+                            className={`group relative flex items-center gap-2.5 py-2 pl-10 pr-5 text-sm transition-all duration-150 ${
+                              isActive
+                                ? 'border-l-2 border-primary bg-primary/10 pl-[38px] text-primary-dark'
+                                : 'text-text-muted hover:bg-background hover:pl-11 hover:text-text'
+                            }`}
+                          >
+                            {/* Subtle teal accent on hover */}
+                            {!isActive && (
+                              <span className="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity duration-150 group-hover:opacity-40" />
+                            )}
+                            {lesson.completed ? <CheckCircleIcon /> : <EmptyCircleIcon />}
+                            <span className="leading-snug">{lesson.title}</span>
+                          </Link>
+                        </motion.div>
+                      )
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           )
         })}
       </nav>

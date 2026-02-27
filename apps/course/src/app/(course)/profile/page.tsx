@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/lib/auth/use-auth'
+import { PageTransition } from '@/components/page-transition'
+import { AnimatedProgressBar } from '@/components/animated-progress-bar'
 
 type TechComfort = 'beginner' | 'intermediate' | 'comfortable'
 
@@ -84,6 +86,7 @@ export default function ProfilePage() {
       : 0
 
   return (
+    <PageTransition>
     <div className="mx-auto max-w-2xl">
       <h1 className="font-heading text-3xl text-primary">Profile</h1>
 
@@ -143,12 +146,7 @@ export default function ProfilePage() {
           <span className="text-sm text-text-muted">Overall</span>
           <span className="text-sm font-medium text-primary">{progressPercent}%</span>
         </div>
-        <div className="mb-4 h-2.5 overflow-hidden rounded-full bg-background-dark">
-          <div
-            className="h-full rounded-full bg-primary transition-all"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
+        <AnimatedProgressBar percent={progressPercent} height="h-2.5" className="mb-4" />
         <div className="grid grid-cols-2 gap-4 text-center">
           <div className="rounded-card bg-background p-4">
             <p className="text-2xl font-bold text-primary">{profile?.lessonsCompleted ?? 0}</p>
@@ -190,5 +188,6 @@ export default function ProfilePage() {
         </button>
       </div>
     </div>
+    </PageTransition>
   )
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { SproutAnimation } from '@/components/sprout-animation'
 
 type TechComfort = 'beginner' | 'intermediate' | 'comfortable'
 
@@ -92,7 +93,7 @@ export default function OnboardingPage() {
       >
         {step === 0 && (
           <div className="text-center">
-            <div className="mb-4 text-5xl">🌱</div>
+            <SproutAnimation />
             <h1 className="font-heading text-3xl text-primary">
               Welcome to Grow Your Practice
             </h1>
