@@ -111,3 +111,41 @@ model ResourceDownload {
   user     User     @relation(fields: [userId], references: [id])
   resource Resource @relation(fields: [resourceId], references: [id])
 }
+
+model DailySnapshot {
+  id   String   @id @default(uuid())
+  date DateTime @unique // midnight UTC of the snapshot day
+
+  // Stripe
+  revenue   Float @default(0)
+  purchases Int   @default(0)
+  refundRate Float @default(0)
+
+  // Plausible
+  visitors   Int   @default(0)
+  pageviews  Int   @default(0)
+  bounceRate Float @default(0)
+
+  // ConvertKit
+  subscribers    Int @default(0)
+  newSubscribers Int @default(0)
+
+  // Meta Ads
+  adSpend       Float @default(0)
+  adClicks      Int   @default(0)
+  adImpressions Int   @default(0)
+
+  // Computed
+  cpa               Float @default(0)
+  roas              Float @default(0)
+  cpl               Float @default(0)
+  signupRate        Float @default(0)
+  emailPurchaseRate Float @default(0)
+
+  // Database
+  totalUsers        Int   @default(0)
+  purchasedUsers    Int   @default(0)
+  avgTimeToPurchase Float @default(0)
+
+  createdAt DateTime @default(now())
+}
