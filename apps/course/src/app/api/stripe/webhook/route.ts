@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
+import { addSubscriber } from '@/lib/convertkit'
 import { PrismaClient } from '@gyp/database'
 
 const prisma = new PrismaClient()
@@ -66,6 +67,11 @@ export async function POST(request: NextRequest) {
           },
         })
         console.log(`Purchase completed for ${email}`)
+
+        // Decision: Tag purchaser in ConvertKit for newsletter segmentation (ADR pending, Issue #19)
+        addSubscriber(email, ['gyp-purchased']).catch((err) =>
+          console.error('ConvertKit tagging failed after purchase:', err),
+        )
       } catch (error) {
         console.error('Error upserting user after purchase:', error)
       }
