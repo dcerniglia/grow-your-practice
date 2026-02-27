@@ -13,11 +13,14 @@
     "@gyp/database": "workspace:*",
     "@gyp/shared": "workspace:*",
     "@gyp/ui": "workspace:*",
+    "@stripe/react-stripe-js": "^5.6.0",
+    "@stripe/stripe-js": "^8.8.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.98.0",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "stripe": "^20.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.12.0",
