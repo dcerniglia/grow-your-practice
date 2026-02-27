@@ -32,6 +32,7 @@ const navSections = [
     heading: 'Content',
     links: [
       { href: '/modules', label: 'Modules' },
+      { href: '/resources', label: 'Resources' },
       { href: '/users', label: 'Users' },
     ],
   },
