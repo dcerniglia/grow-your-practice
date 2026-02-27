@@ -1,2 +1,2 @@
 export { brand } from './brand';
-export type { SidebarModule, SidebarLesson, UserProgress } from './types';
+export type { SidebarModule, SidebarLesson, UserProgress, LessonResource, LessonWithModule, NextLessonInfo } from './types';
