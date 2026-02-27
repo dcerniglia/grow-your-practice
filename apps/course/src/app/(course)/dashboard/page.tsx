@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { getModulesWithLessons, getUserProgress, mergeProgressIntoModules, getNextUncompletedLesson } from '@/lib/course-data'
+import { DashboardClient } from '@/components/dashboard-client'
 
 const ENCOURAGEMENTS = [
   "Every lesson you complete brings you closer to a practice that works for you, not the other way around.",
@@ -42,97 +42,14 @@ export default async function DashboardPage() {
   const nextLesson = getNextUncompletedLesson(modulesWithProgress)
 
   return (
-    <div className="mx-auto max-w-4xl">
-      {/* Greeting */}
-      <h1 className="font-heading text-3xl text-primary">
-        {getGreeting()}, there
-      </h1>
-      <p className="mt-2 text-text-muted">{getDayEncouragement()}</p>
-
-      {/* Overall progress */}
-      <div className="mt-8 rounded-card bg-surface p-6 shadow-card">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-heading text-lg text-text">Your Progress</h2>
-          <span className="text-sm font-medium text-primary">{progressPercent}% complete</span>
-        </div>
-        <div className="h-3 overflow-hidden rounded-full bg-background-dark">
-          <div
-            className="h-full rounded-full bg-primary transition-all duration-500"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-        <p className="mt-2 text-sm text-text-muted">
-          {completedLessons} of {totalLessons} lessons completed
-        </p>
-      </div>
-
-      {/* Continue where you left off */}
-      {nextLesson && (
-        <Link
-          href={`/modules/${nextLesson.module.slug}/${nextLesson.lesson.slug}`}
-          className="mt-6 block rounded-card bg-surface p-6 shadow-card transition-shadow hover:shadow-lg"
-        >
-          <p className="mb-1 text-sm font-medium text-text-muted">Continue where you left off</p>
-          <h3 className="font-heading text-xl text-text">{nextLesson.lesson.title}</h3>
-          <p className="mt-1 text-sm text-text-muted">
-            {nextLesson.module.iconEmoji} {nextLesson.module.title}
-          </p>
-          <span className="mt-3 inline-block rounded-button bg-accent px-5 py-2 font-medium text-white">
-            Continue &rarr;
-          </span>
-        </Link>
-      )}
-
-      {/* Module grid */}
-      <h2 className="mb-4 mt-10 font-heading text-xl text-text">Modules</h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {modulesWithProgress.map((mod) => {
-          const modCompleted = mod.lessons.filter((l) => l.completed).length
-          const modTotal = mod.lessons.length
-          const allDone = modCompleted === modTotal && modTotal > 0
-
-          return (
-            <Link
-              key={mod.id}
-              href={`/modules/${mod.slug}`}
-              className="rounded-card bg-surface p-5 shadow-card transition-shadow hover:shadow-lg"
-            >
-              <div className="mb-2 text-2xl">{mod.iconEmoji}</div>
-              <h3 className="font-heading text-base text-text">{mod.title}</h3>
-              <div className="mt-3 flex items-center gap-2">
-                {allDone ? (
-                  <span className="text-sm font-medium text-primary">Complete ✓</span>
-                ) : (
-                  <>
-                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-background-dark">
-                      <div
-                        className="h-full rounded-full bg-primary"
-                        style={{ width: `${modTotal > 0 ? (modCompleted / modTotal) * 100 : 0}%` }}
-                      />
-                    </div>
-                    <span className="text-xs text-text-muted">
-                      {modCompleted}/{modTotal}
-                    </span>
-                  </>
-                )}
-              </div>
-            </Link>
-          )
-        })}
-      </div>
-
-      {/* Resources quick access */}
-      <div className="mt-8">
-        <Link
-          href="/resources"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark"
-        >
-          <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M3 3.5A1.5 1.5 0 014.5 2h6.879a1.5 1.5 0 011.06.44l4.122 4.12A1.5 1.5 0 0117 7.622V16.5a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 013 16.5v-13z" />
-          </svg>
-          Browse all resources &rarr;
-        </Link>
-      </div>
-    </div>
+    <DashboardClient
+      greeting={getGreeting()}
+      encouragement={getDayEncouragement()}
+      progressPercent={progressPercent}
+      completedLessons={completedLessons}
+      totalLessons={totalLessons}
+      nextLesson={nextLesson}
+      modules={modulesWithProgress}
+    />
   )
 }
