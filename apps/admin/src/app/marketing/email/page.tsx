@@ -1,14 +1,120 @@
-import { ChartContainer } from '../../../components/marketing';
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import type { DateRangePreset, DateRange, KpiMetric, EmailMetricDataPoint } from '@gyp/shared';
+import {
+  ChartContainer,
+  DateRangeSelector,
+  getDateRange,
+  KpiCard,
+  KpiCardGrid,
+  EmailPerformanceChart,
+} from '../../../components/marketing';
+
+type TagBreakdown = { tag: string; count: number };
+
+type ConvertKitData = {
+  kpis: KpiMetric[];
+  growth: EmailMetricDataPoint[];
+  tags: TagBreakdown[];
+};
+
+type ApiResponse =
+  | { status: 'ok'; data: ConvertKitData }
+  | { status: 'unavailable'; error: string };
 
 export default function EmailPage() {
+  const [preset, setPreset] = useState<DateRangePreset>('30d');
+  const [range, setRange] = useState<DateRange>(getDateRange('30d'));
+  const [loading, setLoading] = useState(true);
+  const [unavailable, setUnavailable] = useState(false);
+  const [data, setData] = useState<ConvertKitData | null>(null);
+
+  const fetchData = useCallback(async (r: DateRange) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/marketing/convertkit?from=${r.from}&to=${r.to}`);
+      const json: ApiResponse = await res.json();
+      if (json.status === 'unavailable') {
+        setUnavailable(true);
+        setData(null);
+      } else {
+        setUnavailable(false);
+        setData(json.data);
+      }
+    } catch {
+      setUnavailable(true);
+      setData(null);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void fetchData(range);
+  }, [range, fetchData]);
+
+  function handleRangeChange(p: DateRangePreset, r: DateRange) {
+    setPreset(p);
+    setRange(r);
+  }
+
+  const defaultKpis: KpiMetric[] = [
+    { label: 'Subscribers', value: 0, format: 'number' },
+    { label: 'New Subscribers', value: 0, format: 'number' },
+    { label: 'Open Rate', value: 'N/A' },
+    { label: 'Click Rate', value: 'N/A' },
+  ];
+
+  const kpis = data?.kpis ?? defaultKpis;
+
   return (
     <div className="space-y-6">
-      <h1 className="font-heading text-3xl text-primary">Email</h1>
-      <p className="text-sm text-text-muted">ConvertKit subscriber metrics, open rates, and sequence performance.</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="font-heading text-3xl text-primary">Email</h1>
+          <p className="text-sm text-text-muted">
+            ConvertKit subscriber metrics, open rates, and sequence performance.
+          </p>
+        </div>
+        <DateRangeSelector value={preset} onChange={handleRangeChange} />
+      </div>
 
-      <ChartContainer title="Email Performance (Open Rate / Click Rate)" unavailable />
-      <ChartContainer title="Subscriber Growth" unavailable />
-      <ChartContainer title="Tag Breakdown" unavailable />
+      <KpiCardGrid>
+        {kpis.map((metric) => (
+          <KpiCard key={metric.label} metric={metric} loading={loading} unavailable={unavailable} />
+        ))}
+      </KpiCardGrid>
+
+      <ChartContainer title="Email Performance (Open Rate / Click Rate)" unavailable={unavailable}>
+        <EmailPerformanceChart data={data?.growth ?? []} loading={loading} />
+      </ChartContainer>
+
+      <ChartContainer title="Tag Breakdown" unavailable={unavailable}>
+        {loading ? (
+          <div className="flex h-48 items-center justify-center">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          </div>
+        ) : data?.tags.length ? (
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+            {data.tags.map((t) => (
+              <div
+                key={t.tag}
+                className="rounded-card border border-border bg-background p-3"
+              >
+                <p className="text-sm font-medium text-text">{t.tag}</p>
+                <p className="mt-1 text-lg font-semibold text-primary">
+                  {t.count.toLocaleString()}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex h-48 items-center justify-center text-sm text-text-muted">
+            No tags found
+          </div>
+        )}
+      </ChartContainer>
     </div>
   );
 }
