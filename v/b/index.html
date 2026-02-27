@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grow Your Practice — Stop Trading Hours for Dollars</title>
+<meta name="description" content="You're fully booked. You're still broke. The math of 1:1 therapy doesn't work — unless you add leverage. AI is how you build a practice that earns beyond the session.">
+
+<!-- Open Graph / Facebook / iMessage / WhatsApp / Slack -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growyourpractice.ai/">
+<meta property="og:title" content="AI Training for Therapists in Private Practice">
+<meta property="og:description" content="Save 10+ hours every week with AI. The only course built for licensed therapists in private practice. HIPAA-compliant. No tech skills required. $297 one-time.">
+<meta property="og:image" content="https://growyourpractice.ai/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grow Your Practice — AI Training for Therapists in Private Practice">
+<meta property="og:site_name" content="Grow Your Practice">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://growyourpractice.ai/">
+<meta name="twitter:title" content="AI Training for Therapists in Private Practice">
+<meta name="twitter:description" content="Save 10+ hours every week with AI. The only course built for licensed therapists in private practice. HIPAA-compliant. No tech skills required.">
+<meta name="twitter:image" content="https://growyourpractice.ai/assets/images/og-image.png">
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://growyourpractice.ai/">
+<meta name="author" content="David Cerniglia">
+<meta name="keywords" content="AI for therapists, AI training therapists, HIPAA compliant AI, therapist private practice, AI progress notes, SOAP notes AI, therapy documentation AI, AI course therapists">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/assets/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logos/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/logos/favicon.svg">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2D6A6A;
+    --teal-light: #4A9A9A;
+    --teal-lighter: #6BB5B5;
+    --teal-bg: #F0F7F7;
+    --teal-dark: #1E4F4F;
+    --cream: #FDF8F0;
+    --cream-dark: #F5EDE0;
+    --amber: #D4943A;
+    --amber-hover: #C0842E;
+    --amber-light: #F0D4A8;
+    --slate: #1E293B;
+    --slate-soft: #475569;
+    --slate-lighter: #64748B;
+    --white: #FFFFFF;
+    --red-soft: #DC6B6B;
+    --green-soft: #5B9A7A;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --max-width: 1080px;
+    --section-padding: 80px 24px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--slate); line-height: 1.7; font-size: 17px; background: var(--white); -webkit-font-smoothing: antialiased; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s ease; }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo .wordmark-text { font-family: var(--font-display); font-size: 18px; color: var(--teal); white-space: nowrap; }
+  .nav-logo .wordmark-text .ai { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--white); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s ease, transform 0.2s ease; }
+  .nav-cta:hover { background: var(--amber-hover); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { padding: 140px 24px 80px; background: var(--cream); position: relative; overflow: hidden; }
+  .hero-inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; }
+  .hero-badge { display: inline-block; background: var(--teal); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.2; color: var(--slate); margin-bottom: 20px; }
+  .hero h1 em { color: var(--teal); font-style: italic; }
+  .hero-sub { font-size: 1.15rem; color: var(--slate-soft); max-width: 600px; margin: 0 auto 32px; line-height: 1.7; }
+  .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .btn-primary { display: inline-block; background: var(--amber); color: var(--white); padding: 16px 40px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: all 0.2s ease; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(212, 148, 58, 0.3); }
+  .btn-primary:hover { background: var(--amber-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 148, 58, 0.4); }
+  .hero-note { font-size: 0.85rem; color: var(--slate-lighter); }
+  .hero-proof { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.06); display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .proof-item { text-align: center; }
+  .proof-number { font-family: var(--font-display); font-size: 1.8rem; color: var(--teal); }
+  .proof-label { font-size: 0.8rem; color: var(--slate-lighter); margin-top: 2px; }
+
+  /* PROBLEM */
+  .problem { padding: var(--section-padding); background: var(--white); }
+  .problem-inner { max-width: 720px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+  .problem h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.25; margin-bottom: 24px; color: var(--slate); }
+  .problem p { margin-bottom: 20px; color: var(--slate-soft); font-size: 1.05rem; }
+  .problem-list { list-style: none; margin: 32px 0; }
+  .problem-list li { padding: 14px 0 14px 36px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 1.05rem; color: var(--slate-soft); }
+  .problem-list li::before { content: '→'; position: absolute; left: 0; color: var(--red-soft); font-weight: 700; }
+  .agitate { background: var(--cream); border-radius: 12px; padding: 28px 32px; margin: 32px 0; border-left: 4px solid var(--amber); }
+  .agitate p { color: var(--slate); font-size: 1.05rem; margin-bottom: 0; font-style: italic; }
+
+  /* MATH SECTION */
+  .math-section { padding: var(--section-padding); background: var(--cream); }
+  .math-inner { max-width: 720px; margin: 0 auto; }
+  .math-section h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.25; margin-bottom: 24px; color: var(--slate); }
+  .math-section p { color: var(--slate-soft); font-size: 1.05rem; margin-bottom: 20px; }
+  .math-table { width: 100%; border-collapse: collapse; margin: 32px 0; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .math-table th, .math-table td { padding: 16px 20px; text-align: left; font-size: 0.95rem; }
+  .math-table thead th { background: var(--teal); color: var(--white); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .math-table tbody tr { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .math-table tbody tr:last-child { border-bottom: none; }
+  .math-table tbody td { color: var(--slate-soft); }
+  .math-table .highlight-row { background: var(--teal-bg); }
+  .math-table .highlight-row td { color: var(--teal-dark); font-weight: 600; }
+  .math-table .total-row { background: var(--teal); }
+  .math-table .total-row td { color: var(--white); font-weight: 700; font-size: 1.05rem; }
+
+  /* BRIDGE */
+  .bridge { padding: var(--section-padding); background: var(--teal); color: var(--white); text-align: center; }
+  .bridge-inner { max-width: 700px; margin: 0 auto; }
+  .bridge h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.25; margin-bottom: 20px; }
+  .bridge p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 16px; line-height: 1.7; }
+  .bridge-highlight { display: inline-block; background: rgba(255,255,255,0.15); padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+
+  /* CURRICULUM */
+  .curriculum { padding: var(--section-padding); background: var(--white); }
+  .curriculum-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+  .curriculum h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 12px; }
+  .curriculum-sub { color: var(--slate-soft); font-size: 1.05rem; }
+  .module-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+  .module-card { background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 28px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; overflow: hidden; }
+  .module-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+  .module-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--teal-light); }
+  .module-number { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+  .module-card h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 8px; color: var(--slate); }
+  .module-card p { font-size: 0.92rem; color: var(--slate-soft); margin-bottom: 16px; line-height: 1.6; }
+  .module-outcome { font-size: 0.82rem; color: var(--green-soft); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.06); }
+  .module-outcome::before { content: '✓ '; }
+
+  /* HIPAA */
+  .hipaa { padding: var(--section-padding); background: var(--teal-bg); }
+  .hipaa-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .hipaa-icon { width: 64px; height: 64px; background: var(--teal); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 1.8rem; }
+  .hipaa h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 16px; }
+  .hipaa p { color: var(--slate-soft); font-size: 1.05rem; margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .hipaa-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 32px; text-align: left; }
+  .hipaa-item { background: var(--white); padding: 20px; border-radius: 10px; font-size: 0.92rem; color: var(--slate-soft); line-height: 1.5; border: 1px solid rgba(45,106,106,0.1); }
+  .hipaa-item strong { display: block; color: var(--slate); margin-bottom: 4px; }
+
+  /* ABOUT */
+  .about { padding: var(--section-padding); background: var(--white); }
+  .about-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+  .about-photo { width: 200px; height: 240px; border-radius: 14px; overflow: hidden; flex-shrink: 0; }
+  .about h2 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 16px; }
+  .about p { color: var(--slate-soft); font-size: 1rem; margin-bottom: 14px; line-height: 1.7; }
+  .about-credentials { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+  .credential { font-size: 0.8rem; color: var(--teal); font-weight: 600; padding: 6px 14px; background: var(--teal-bg); border-radius: 100px; }
+
+  /* OFFER */
+  .offer { padding: var(--section-padding); background: var(--cream); }
+  .offer-inner { max-width: 680px; margin: 0 auto; }
+  .offer-header { text-align: center; margin-bottom: 40px; }
+  .offer h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 12px; }
+  .offer-sub { color: var(--slate-soft); font-size: 1.05rem; }
+  .value-stack { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 2px solid var(--teal); }
+  .value-stack-header { background: var(--teal); color: var(--white); padding: 20px 28px; text-align: center; font-family: var(--font-display); font-size: 1.3rem; }
+  .value-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; }
+  .value-item:last-of-type { border-bottom: none; }
+  .value-item-left { display: flex; align-items: flex-start; gap: 12px; flex: 1; }
+  .value-check { color: var(--teal); font-weight: 700; font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .value-item-name { font-weight: 500; color: var(--slate); }
+  .value-item-desc { font-size: 0.82rem; color: var(--slate-lighter); margin-top: 2px; }
+  .value-item-price { font-weight: 600; color: var(--slate-lighter); text-decoration: line-through; white-space: nowrap; margin-left: 16px; }
+  .value-total { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; background: var(--teal-bg); border-top: 2px solid var(--teal); }
+  .value-total-label { font-family: var(--font-display); font-size: 1.15rem; color: var(--slate); }
+  .value-total-price { font-family: var(--font-display); font-size: 1.4rem; color: var(--slate-lighter); text-decoration: line-through; }
+  .price-box { text-align: center; padding: 32px 28px; background: var(--white); }
+  .price-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+  .price-amount { font-family: var(--font-display); font-size: 3.5rem; color: var(--slate); line-height: 1; margin-bottom: 4px; }
+  .price-period { font-size: 0.9rem; color: var(--slate-lighter); margin-bottom: 20px; }
+  .price-includes { font-size: 0.85rem; color: var(--slate-soft); margin-bottom: 24px; line-height: 1.6; }
+
+  /* GUARANTEE */
+  .guarantee { padding: 60px 24px; background: var(--white); }
+  .guarantee-inner { max-width: 680px; margin: 0 auto; background: var(--teal-bg); border-radius: 16px; padding: 40px; text-align: center; border: 2px solid rgba(45,106,106,0.15); }
+  .guarantee-icon { font-size: 2.5rem; margin-bottom: 16px; }
+  .guarantee h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 12px; color: var(--teal-dark); }
+  .guarantee p { color: var(--slate-soft); font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+  /* WHO */
+  .who { padding: var(--section-padding); background: var(--white); }
+  .who-inner { max-width: 800px; margin: 0 auto; }
+  .who h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2rem); text-align: center; margin-bottom: 40px; }
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .who-col h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .who-col ul { list-style: none; }
+  .who-col li { padding: 8px 0; font-size: 0.95rem; color: var(--slate-soft); padding-left: 24px; position: relative; }
+  .for-col li::before { content: '✓'; position: absolute; left: 0; color: var(--green-soft); font-weight: 700; }
+  .not-col li::before { content: '✗'; position: absolute; left: 0; color: var(--red-soft); font-weight: 700; }
+
+  /* FAQ */
+  .faq { padding: var(--section-padding); background: var(--teal-bg); }
+  .faq h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2rem); text-align: center; margin-bottom: 40px; }
+  .faq-list { max-width: 680px; margin: 0 auto; }
+  .faq-item { background: var(--white); border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+  .faq-question { width: 100%; background: none; border: none; padding: 20px 24px; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--slate); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .faq-question::after { content: '+'; font-size: 1.4rem; color: var(--teal); transition: transform 0.2s ease; flex-shrink: 0; margin-left: 16px; }
+  .faq-item.open .faq-question::after { transform: rotate(45deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
+  .faq-answer p { font-size: 0.95rem; color: var(--slate-soft); line-height: 1.7; }
+
+  /* NEWSLETTER */
+  .newsletter { padding: 60px 24px; background: var(--white); text-align: center; }
+  .newsletter-inner { max-width: 520px; margin: 0 auto; }
+  .newsletter h2 { font-family: var(--font-display); font-size: 1.5rem; color: var(--slate); margin-bottom: 12px; }
+  .newsletter p { color: var(--slate-soft); margin-bottom: 28px; font-size: 0.95rem; }
+  .newsletter-form { display: flex; gap: 10px; }
+  .newsletter-input { flex: 1; padding: 14px 18px; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 8px; font-family: var(--font-body); font-size: 0.95rem; background: var(--white); color: var(--slate); transition: border-color 0.2s ease; }
+  .newsletter-input:focus { outline: none; border-color: var(--teal); }
+  .newsletter-input::placeholder { color: var(--slate-lighter); }
+  .btn-secondary { display: inline-block; background: var(--teal); color: var(--white); padding: 14px 24px; border-radius: 8px; border: none; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background 0.2s ease; white-space: nowrap; }
+  .btn-secondary:hover { background: var(--teal-light); }
+
+  /* FINAL CTA */
+  .final-cta { padding: 80px 24px; background: var(--teal); color: var(--white); text-align: center; }
+  .final-cta-inner { max-width: 600px; margin: 0 auto; }
+  .final-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 16px; line-height: 1.25; }
+  .final-cta p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 32px; line-height: 1.7; }
+  .final-cta .btn-primary { font-size: 1.15rem; padding: 18px 48px; }
+  .final-note { margin-top: 16px; font-size: 0.85rem; opacity: 0.7; }
+  footer { padding: 40px 24px; background: var(--slate); color: rgba(255,255,255,0.5); text-align: center; font-size: 0.85rem; }
+  footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  @media (max-width: 768px) {
+    .about-inner { grid-template-columns: 1fr; text-align: center; }
+    .about-photo { margin: 0 auto; }
+    .who-grid { grid-template-columns: 1fr; }
+    .hero-proof { gap: 24px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .hipaa-items { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .math-table { font-size: 0.85rem; }
+    .math-table th, .math-table td { padding: 12px 14px; }
+  }
+</style>
+<!-- Structured Data: Course -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Grow Your Practice — AI Training for Therapists in Private Practice",
+  "description": "The only AI course built specifically for licensed therapists in private practice. Learn to use AI for progress notes, HIPAA compliance, marketing, and building new income streams. 6 modules, 50+ prompts, zero tech skills required.",
+  "provider": {
+    "@type": "Person",
+    "name": "David Cerniglia",
+    "jobTitle": "Full-Stack Developer & Technology Advisor",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Carnegie Mellon University"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "297",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://growyourpractice.ai/#offer"
+  },
+  "coursePrerequisites": "Licensed therapist (LPC, LCSW, LMFT, PsyD) in private practice. No technical skills required.",
+  "numberOfCredits": "6 modules",
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT3H"
+  }
+}
+</script>
+
+<!-- Structured Data: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "I'm not technical at all. Will I be able to follow this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. This course was built for clinicians, not developers. Every lesson shows you exactly where to click, what to type, and what to expect. Module 1 gives you a win in under 15 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this HIPAA-compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We dedicate an entire module to HIPAA and AI. You'll learn which tools offer Business Associate Agreements, how to de-identify client information, and a decision-making framework for evaluating any new tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the course take to complete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each module takes about 30-45 minutes. You can complete the entire course in a weekend, or take one module per week. Content is available forever."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI tools cost me extra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most of what you'll learn uses free or low-cost tools. ChatGPT has a free tier, and Claude offers a free plan as well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I write this off as a business expense?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most cases, yes — professional development courses are typically tax-deductible for licensed professionals."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Grow Your Practice",
+  "url": "https://growyourpractice.ai",
+  "logo": "https://growyourpractice.ai/assets/images/og-image.png",
+  "founder": {
+    "@type": "Person",
+    "name": "David Cerniglia"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "david@growyourpractice.ai",
+    "contactType": "customer service"
+  }
+}
+</script>
+
+</head>
+<body data-variant="b">
+
+<nav id="nav"><div class="nav-inner"><a href="#" class="nav-logo"><svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/><path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/><path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/><circle cx="40" cy="28" r="3" fill="#D4943A"/></svg><span class="wordmark-text">growyourpractice<span class="ai">.ai</span></span></a><a href="#offer" class="nav-cta">Enroll Now — $297</a></div></nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">For Therapists Who Are Fully Booked &amp; Still Struggling</span>
+    <h1>Your Calendar Is Full. Your Bank Account <em>Disagrees.</em></h1>
+    <p class="hero-sub">You're seeing 25+ clients a week. You're exhausted. And you're still doing the mental math on whether you can afford a vacation this year. The problem isn't your work ethic — it's your business model. AI fixes the math.</p>
+    <div class="hero-cta-group">
+      <a href="#offer" class="btn-primary">Show Me the Math →</a>
+      <span class="hero-note">One-time payment. 30-day money-back guarantee.</span>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item"><div class="proof-number">$2–5K</div><div class="proof-label">New monthly revenue potential</div></div>
+      <div class="proof-item"><div class="proof-number">3</div><div class="proof-label">New income streams unlocked</div></div>
+      <div class="proof-item"><div class="proof-number">6</div><div class="proof-label">Step-by-step modules</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROBLEM ==================== -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="section-eyebrow">Let's be honest</div>
+    <h2>You built a practice. But you accidentally built yourself a job.</h2>
+    <p>You did everything right. You got licensed. You built a caseload. You're "successful." But here's the part nobody warned you about in grad school:</p>
+    <ul class="problem-list">
+      <li>Your income has a hard ceiling — there are only so many hours in a week, and you're already at the limit</li>
+      <li>If you don't see clients, you don't get paid. Vacations are expensive twice — the trip <em>and</em> the lost income</li>
+      <li>You've thought about raising your rates, but you're already at the top of what your market will bear</li>
+      <li>You know you should build something beyond 1:1 — a group, a course, a workshop — but you have zero time and no idea where to start</li>
+      <li>Other therapists seem to be figuring this out. You wonder what they know that you don't</li>
+    </ul>
+    <div class="agitate">
+      <p>Here's the uncomfortable math: if you see 25 clients at $150/session, 48 weeks a year, that's $180,000. Sounds great — until you subtract taxes, insurance, office rent, CEUs, billing software, and the fact that you're working 50+ hours a week with no PTO, no benefits, and no retirement match. You didn't build a thriving practice. You built a high-paying trap.</p>
+    </div>
+    <p>The therapists who are breaking out of this aren't working harder. They're not even working more. They found <strong>leverage</strong> — ways to earn beyond the session. And AI is the tool that makes it possible without adding more hours to your week.</p>
+  </div>
+</section>
+
+<!-- ==================== THE MATH ==================== -->
+<section class="math-section">
+  <div class="math-inner">
+    <div class="section-eyebrow">The revenue gap</div>
+    <h2>Here's what an AI-powered practice looks like vs. what you're doing now.</h2>
+    <p>This isn't hypothetical. These are real income streams that therapists are building right now — most of them in under 10 hours using AI tools.</p>
+    <table class="math-table">
+      <thead>
+        <tr><th>Income Stream</th><th>Without AI</th><th>With AI</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1:1 Client Sessions</td><td>$180,000/yr</td><td>$180,000/yr</td></tr>
+        <tr class="highlight-row"><td>Group Therapy Program (8 clients × $75 × 48 wks)</td><td>$0</td><td>$28,800/yr</td></tr>
+        <tr class="highlight-row"><td>Digital Workshop ($97 × 10 enrollments/mo)</td><td>$0</td><td>$11,640/yr</td></tr>
+        <tr class="highlight-row"><td>Email-Driven Course ($197 × 5/mo)</td><td>$0</td><td>$11,820/yr</td></tr>
+        <tr class="highlight-row"><td>Optimized Client Pipeline (3 extra clients/mo)</td><td>$0</td><td>$5,400/yr</td></tr>
+        <tr class="total-row"><td>Total Annual Revenue</td><td>$180,000</td><td>$237,660</td></tr>
+      </tbody>
+    </table>
+    <p>That's an extra <strong>$57,000 a year</strong> — and three of those four income streams earn money whether you're in session or not. That's the difference between a job and a business.</p>
+  </div>
+</section>
+
+<!-- ==================== BRIDGE ==================== -->
+<section class="bridge">
+  <div class="bridge-inner">
+    <div class="section-eyebrow" style="color: rgba(255,255,255,0.6);">The leverage you're missing</div>
+    <h2>AI doesn't replace your clinical skills. It turns them into products.</h2>
+    <p><strong>Grow Your Practice</strong> shows you how to use AI to take what you already know — your frameworks, your expertise, your voice — and turn it into <span class="bridge-highlight">group programs</span>, <span class="bridge-highlight">digital workshops</span>, <span class="bridge-highlight">content that attracts clients</span>, and <span class="bridge-highlight">income that doesn't require your physical presence</span>.</p>
+    <p>You don't need to become a marketer. You don't need to become a tech person. You just need a system — and someone to show you exactly how it works.</p>
+  </div>
+</section>
+
+<!-- ==================== CURRICULUM ==================== -->
+<section class="curriculum" id="curriculum">
+  <div class="container">
+    <div class="curriculum-header">
+      <div class="section-eyebrow">What's Inside</div>
+      <h2>Six Modules. One New Business Model.</h2>
+      <p class="curriculum-sub">Each module gives you a revenue-generating skill. By Module 6, you'll have a practice that earns in three dimensions instead of one.</p>
+    </div>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-number">Module 1 · Foundation</div>
+        <h3>AI for Clinicians: The 15-Minute Start</h3>
+        <p>Get your first useful AI output before your coffee gets cold. No jargon, no setup headaches. We start with wins that save you time today so you trust the tool for everything that follows.</p>
+        <div class="module-outcome">Draft tomorrow's progress note in 5 minutes</div>
+      </div>
+      <div class="module-card">
+        <div class="module-number">Module 2 · Safety</div>
+        <h3>HIPAA, Ethics, and the AI Compliance Playbook</h3>
+        <p>The #1 objection, handled completely. Plain-English guidance on what's safe, what's not, which tools have BAAs, and how to de-identify data. You'll know more than 99% of clinicians.</p>
+        <div class="module-outcome">A compliance checklist you'll use every day</div>
+      </div>
+      <div class="module-card">
+        <div class="module-number">Module 3 · Time</div>
+        <h3>Kill the Admin. Reclaim 10 Hours a Week.</h3>
+        <p>SOAP notes, treatment plans, intake forms, client communication — all streamlined with AI. This module alone pays for the course in your first week. The time you get back becomes the fuel for everything else.</p>
+        <div class="module-outcome">Documentation time drops by 75%</div>
+      </div>
+      <div class="module-card">
+        <div class="module-number">Module 4 · Revenue Stream #1</div>
+        <h3>Fill Every Open Slot (Without Paying for Ads)</h3>
+        <p>Use AI to rewrite your Psychology Today profile, generate blog content that ranks, build a social presence your ideal clients actually find, and create a referral engine that runs on autopilot.</p>
+        <div class="module-outcome">A complete 30-day marketing plan, done</div>
+      </div>
+      <div class="module-card">
+        <div class="module-number">Module 5 · Revenue Streams #2-4</div>
+        <h3>Build Income That Doesn't Require You In the Room</h3>
+        <p>This is the module that changes your financial life. Group therapy design. Digital workshops. Email courses. AI helps you outline, create, market, and launch offerings that earn while you sleep — or while you're on vacation.</p>
+        <div class="module-outcome">Your first alternate income stream, fully mapped</div>
+      </div>
+      <div class="module-card">
+        <div class="module-number">Module 6 · System</div>
+        <h3>Your AI-Powered Practice: The Weekly Playbook</h3>
+        <p>Put it all together. A sustainable weekly workflow. The exact tools and automations. A plan for staying current without drowning in the noise. This is where the practice becomes a business.</p>
+        <div class="module-outcome">A 30-day AI implementation plan, personalized to you</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HIPAA ==================== -->
+<section class="hipaa">
+  <div class="hipaa-inner">
+    <div class="hipaa-icon">🛡️</div>
+    <div class="section-eyebrow">Your #1 Concern, Addressed</div>
+    <h2>Yes, You Can Use AI and Stay HIPAA-Compliant.</h2>
+    <p>We don't brush this aside with a disclaimer. Module 2 is an entire deep-dive into exactly how to use AI safely, ethically, and within the law.</p>
+    <div class="hipaa-items">
+      <div class="hipaa-item"><strong>De-identification techniques</strong>How to get AI's help without sharing protected health information</div>
+      <div class="hipaa-item"><strong>BAA-ready tools</strong>Which platforms offer Business Associate Agreements — and which don't</div>
+      <div class="hipaa-item"><strong>Compliance checklist</strong>A downloadable guide you can reference every time you use a new tool</div>
+      <div class="hipaa-item"><strong>Ethical decision tree</strong>A framework for evaluating any AI tool against your professional ethics code</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo"><img src="/assets/images/david-headshot.jpg" alt="David Cerniglia" style="width:100%; height:100%; object-fit:cover; border-radius:12px;"></div>
+    <div>
+      <div class="section-eyebrow">Your Guide</div>
+      <h2>Hi, I'm David.</h2>
+      <p>I've been where you are — running a business built on relationships and wondering why the money doesn't match the effort. I co-founded a tutoring company that grew to serve thousands of students across seven schools, grossing $400K a year. Same structure as your practice: one-on-one sessions, client relationships, scheduling nightmares, and the constant feeling that the business was running me instead of the other way around.</p>
+      <p>Then I found leverage.</p>
+      <p>I'm a full-stack software developer and technology advisor. I taught at Carnegie Mellon, earned a graduate degree there, and spent years learning how to make complex things simple. I built this course because the smartest therapists I know are stuck in the same trap I was — and the way out is closer than they think.</p>
+      <div class="about-credentials">
+        <span class="credential">Full-Stack Developer</span>
+        <span class="credential">MA, Carnegie Mellon</span>
+        <span class="credential">Education Entrepreneur</span>
+        <span class="credential">Technology Advisor</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OFFER ==================== -->
+<section class="offer" id="offer">
+  <div class="offer-inner">
+    <div class="offer-header">
+      <div class="section-eyebrow">The Investment</div>
+      <h2>Everything You Need to Add $50K+ in Revenue</h2>
+      <p class="offer-sub">The cost of this course is less than what one group therapy session per week adds to your annual income.</p>
+    </div>
+    <div class="value-stack">
+      <div class="value-stack-header">Founding Member Access</div>
+      <div class="value-item"><div class="value-item-left"><span class="value-check">✓</span><div><div class="value-item-name">6-Module Video Course with Revenue-Building Exercises</div><div class="value-item-desc">Step-by-step walkthroughs from first AI prompt to first new income stream</div></div></div><span class="value-item-price">$1,500</span></div>
+      <div class="value-item"><div class="value-item-left"><span class="value-check">✓</span><div><div class="value-item-name">The AI Revenue Toolkit for Therapists</div><div class="value-item-desc">50+ prompts for marketing copy, group program design, workshop outlines, and sales pages</div></div></div><span class="value-item-price">$497</span></div>
+      <div class="value-item"><div class="value-item-left"><span class="value-check">✓</span><div><div class="value-item-name">The Alternate Income Playbook</div><div class="value-item-desc">Complete blueprints for groups, workshops, digital products, and email courses — with AI doing the heavy lifting</div></div></div><span class="value-item-price">$497</span></div>
+      <div class="value-item"><div class="value-item-left"><span class="value-check">✓</span><div><div class="value-item-name">30 Days Free: AI & Private Practice Newsletter</div><div class="value-item-desc">Monthly updates on new tools, revenue strategies, and what's working for other therapists</div></div></div><span class="value-item-price">$87</span></div>
+      <div class="value-item"><div class="value-item-left"><span class="value-check">✓</span><div><div class="value-item-name">Private Community Access</div><div class="value-item-desc">Connect with therapists who are building practices that actually scale</div></div></div><span class="value-item-price">$497</span></div>
+      <div class="value-item"><div class="value-item-left"><span class="value-check">✓</span><div><div class="value-item-name">Monthly Live Q&A with David</div><div class="value-item-desc">First 3 months — bring your revenue questions, get real answers</div></div></div><span class="value-item-price">$300</span></div>
+      <div class="value-total"><span class="value-total-label">Total Value</span><span class="value-total-price">$3,378</span></div>
+      <div class="price-box">
+        <div class="price-label">Founding Member Price</div>
+        <div class="price-amount">$297</div>
+        <div class="price-period">One-time payment · Includes 30 days free newsletter</div>
+        <p class="price-includes">That's less than two client sessions. The revenue strategies inside could add $2,000–$5,000/month to your practice within 90 days. After 30 days, continue the newsletter for $29/month — cancel anytime. The course is yours forever.</p>
+        <a href="#" class="btn-primary" style="width: 100%; display: block; text-align: center;">I'm Ready to Fix the Math →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GUARANTEE ==================== -->
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <div class="guarantee-icon">🛡️</div>
+    <h3>The "Show Me the Money" Guarantee</h3>
+    <p>Go through the course. Build your first alternate income stream using the playbook. If you don't see a clear path to earning at least an extra $1,000/month within 30 days — or if this simply isn't right for you — email me and I'll refund every penny. No forms. No questions. Just a simple email.</p>
+  </div>
+</section>
+
+<!-- ==================== WHO ==================== -->
+<section class="who">
+  <div class="who-inner">
+    <h2>Is This Right for You?</h2>
+    <div class="who-grid">
+      <div class="who-col for-col">
+        <h3>✅ This is for you if...</h3>
+        <ul>
+          <li>You're a licensed therapist in private practice who's hit an income ceiling</li>
+          <li>You're working 40+ hours/week and wondering where the money goes</li>
+          <li>You've thought about groups, workshops, or courses but don't know where to start</li>
+          <li>You want to build revenue that doesn't depend on you being in the room</li>
+          <li>You care about doing this ethically and within HIPAA guidelines</li>
+          <li>You're not technical — and that's completely fine</li>
+        </ul>
+      </div>
+      <div class="who-col not-col">
+        <h3>🚫 This isn't for you if...</h3>
+        <ul>
+          <li>You're happy with your current income and work-life balance</li>
+          <li>You're looking for a get-rich-quick scheme (this requires real work)</li>
+          <li>You're not willing to invest 30 minutes per module</li>
+          <li>You already have multiple income streams dialed in</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="faq" id="faq">
+  <h2>Common Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-question">I'm fully booked — when am I supposed to find time for this?</button><div class="faq-answer"><p>That's exactly the point. Module 3 gives you 10+ hours back per week by streamlining your documentation with AI. You reinvest that time into the revenue-building work in Modules 4-6. The course is designed for busy clinicians — each module is 30-45 minutes, and the income strategies are built to require minimal ongoing time.</p></div></div>
+    <div class="faq-item"><button class="faq-question">Is this just another "passive income" grift?</button><div class="faq-answer"><p>No. This is about using AI to productize your existing expertise. You already know how to help people — this shows you how to package that knowledge into group programs, workshops, and digital products that serve more people at once. It's leverage, not magic. It requires real work upfront, but the math is dramatically different than pure 1:1.</p></div></div>
+    <div class="faq-item"><button class="faq-question">Can I really add $50K in revenue?</button><div class="faq-answer"><p>The math is in the table above — and it's conservative. One group therapy program (8 clients × $75/session × 48 weeks) adds nearly $29,000 alone. Add a digital workshop or email course and you're well past $50K. The question isn't whether the math works — it's whether you'll take the 6 hours to learn how to set it up.</p></div></div>
+    <div class="faq-item"><button class="faq-question">Is this HIPAA-compliant?</button><div class="faq-answer"><p>Entire module dedicated to it. You'll learn exactly which tools offer Business Associate Agreements, how to de-identify client information, and a decision-making framework for evaluating any new tool. You'll know more about AI compliance than most tech companies.</p></div></div>
+    <div class="faq-item"><button class="faq-question">I'm not technical at all. Can I do this?</button><div class="faq-answer"><p>This was built for clinicians, not developers. If you can write a progress note, you can use AI. Module 1 gives you a win in under 15 minutes regardless of your starting point.</p></div></div>
+    <div class="faq-item"><button class="faq-question">What happens after the 30 free days of the newsletter?</button><div class="faq-answer"><p>You can continue for $29/month — it keeps you current on new tools and revenue strategies. But it's completely optional. Your course access and all bonuses are yours forever regardless.</p></div></div>
+  </div>
+</section>
+
+<!-- ==================== NEWSLETTER ==================== -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h2>Not Ready Yet? Start Here.</h2>
+    <p>Get our free weekly email: one AI revenue strategy for therapists, explained in plain English. No spam. Unsubscribe anytime.</p>
+    <form class="newsletter-form" id="newsletter-form"><input type="email" class="newsletter-input" placeholder="your@email.com" required aria-label="Email address"><button type="submit" class="btn-secondary">Subscribe Free</button></form>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2>You didn't get licensed to trade hours for dollars forever.</h2>
+    <p>For less than two client sessions, you'll learn how to build a practice with multiple income streams — one that grows even when you're not in the room. The therapists who figure this out now won't just survive the next decade. They'll own it.</p>
+    <a href="#offer" class="btn-primary">Join Grow Your Practice — $297 →</a>
+    <p class="final-note">30-day money-back guarantee · One-time payment · Instant access</p>
+  </div>
+</section>
+
+<footer><p>&copy; 2026 Grow Your Practice · <a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="mailto:david@growyourpractice.ai">Contact</a></p><p style="margin-top: 8px;">This course is for educational purposes and does not constitute legal, clinical, or compliance advice.</p></footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20)});
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open')})});
+document.getElementById('newsletter-form').addEventListener('submit',(e)=>{e.preventDefault();const input=e.target.querySelector('input');const btn=e.target.querySelector('button');btn.textContent='Subscribed ✓';btn.style.background='var(--teal-dark)';input.value='';setTimeout(()=>{btn.textContent='Subscribe Free';btn.style.background=''},3000)});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const target=document.querySelector(a.getAttribute('href'));if(target)target.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+<script>
+(function() {
+  var variant = 'b';
+  window.__GYP_VARIANT = variant;
+  if (typeof plausible !== 'undefined') { plausible('pageview', {props: {variant: variant}}); }
+  if (typeof gtag !== 'undefined') { gtag('event', 'pageview', {variant: variant}); }
+  document.querySelectorAll('a.btn-primary, a.nav-cta').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href && href.indexOf('#') === 0) return;
+    try {
+      var url = new URL(href, window.location.origin);
+      url.searchParams.set('v', variant);
+      a.setAttribute('href', url.toString());
+    } catch(e) {}
+  });
+})();
+</script>
+</body>
+</html>
