@@ -12,3 +12,9 @@ dist/
 
 # Business docs (not code, backed up separately)
 business/
+
+# Misc files that shouldn't be tracked
+*.tar.gz
+*.zip
+.~lock.*
+marketing/logo-concepts.html

@@ -14,8 +14,8 @@
 ```
 grow-your-practice/
 ├── apps/
-│   ├── marketing/          # Next.js — static sales/landing site
-│   ├── course/             # Next.js — authenticated course platform
+│   ├── marketing/          # Next.js — NOT USED for MVP. Marketing site is static index.html served via GitHub Pages.
+│   ├── course/             # Next.js — authenticated course platform (deployed to Railway)
 │   └── admin/              # Next.js — CMS for content management (David only)
 ├── packages/
 │   ├── database/           # Prisma schema, client, migrations, seed

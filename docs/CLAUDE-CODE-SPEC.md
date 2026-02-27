@@ -304,10 +304,7 @@ model ResourceDownload {
 
 ```
 app/
-├── (marketing)/              # Public pages (no auth required)
-│   ├── page.tsx              # Landing/sales page
-│   ├── layout.tsx            # Marketing layout (no sidebar)
-│   └── pricing/page.tsx      # Optional standalone pricing page
+├── page.tsx                  # Root redirect → /dashboard
 │
 ├── (auth)/                   # Auth pages
 │   ├── login/page.tsx        # Email + magic link login
@@ -372,7 +369,7 @@ app/
 
 ### 7.1 Landing / Sales Page
 
-**Location**: `app/(marketing)/page.tsx`  
+**Location**: Static `index.html` (served via GitHub Pages, separate from the course app)
 **Layout**: Full-width, no sidebar. Cream background.
 
 **Structure** (Hormozi value-stack approach):
