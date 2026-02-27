@@ -1,19 +1,32 @@
 import { UserMenu } from './user-menu'
+import { Sidebar } from '@/components/sidebar'
+import { MobileNav } from '@/components/mobile-nav'
+import { getModulesWithLessons, getUserProgress, mergeProgressIntoModules } from '@/lib/course-data'
 
-export default function CourseLayout({ children }: { children: React.ReactNode }) {
+export default async function CourseLayout({ children }: { children: React.ReactNode }) {
+  const [modules, progress] = await Promise.all([
+    getModulesWithLessons(),
+    getUserProgress(),
+  ])
+  const modulesWithProgress = mergeProgressIntoModules(modules, progress)
+
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar placeholder — will be built in Issue #5 */}
-      <aside className="hidden w-64 border-r border-border bg-surface lg:block">
-        <div className="p-6">
-          <h2 className="font-heading text-lg text-primary">Grow Your Practice</h2>
-        </div>
-      </aside>
+      {/* Desktop sidebar */}
+      <div className="hidden lg:block">
+        <Sidebar modules={modulesWithProgress} />
+      </div>
+
       <div className="flex flex-1 flex-col">
-        <header className="flex items-center justify-end border-b border-border bg-surface px-6 py-3">
+        {/* Mobile top bar with hamburger */}
+        <MobileNav modules={modulesWithProgress} />
+
+        {/* Desktop header */}
+        <header className="hidden items-center justify-end border-b border-border bg-surface px-6 py-3 lg:flex">
           <UserMenu />
         </header>
-        <main className="flex-1 p-6">{children}</main>
+
+        <main className="flex-1 p-6 pb-20 lg:pb-6">{children}</main>
       </div>
     </div>
   )
