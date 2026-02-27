@@ -31,19 +31,15 @@ type Module = {
 type EditingResource = {
   title: string;
   description: string;
-  fileName: string;
-  fileUrl: string;
-  fileType: string;
   lessonId: string;
+  file: File | null;
 };
 
 const emptyForm: EditingResource = {
   title: '',
   description: '',
-  fileName: '',
-  fileUrl: '',
-  fileType: 'PDF',
   lessonId: '',
+  file: null,
 };
 
 export default function ResourcesPage() {
@@ -94,10 +90,8 @@ export default function ResourcesPage() {
     setForm({
       title: res.title,
       description: res.description || '',
-      fileName: res.fileName,
-      fileUrl: res.fileUrl,
-      fileType: res.fileType,
       lessonId: res.lessonId,
+      file: null,
     });
   }
 
@@ -108,14 +102,26 @@ export default function ResourcesPage() {
 
   async function save() {
     setSaving(true);
-    const method = editing === 'new' ? 'POST' : 'PUT';
-    const url = editing === 'new' ? '/api/resources' : `/api/resources/${editing}`;
 
-    await fetch(url, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
+    if (editing === 'new') {
+      const formData = new FormData();
+      formData.append('title', form.title);
+      formData.append('description', form.description);
+      formData.append('lessonId', form.lessonId);
+      if (form.file) formData.append('file', form.file);
+
+      await fetch('/api/resources', { method: 'POST', body: formData });
+    } else {
+      await fetch(`/api/resources/${editing}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: form.title,
+          description: form.description,
+          lessonId: form.lessonId,
+        }),
+      });
+    }
 
     setSaving(false);
     setEditing(null);
@@ -177,34 +183,15 @@ export default function ResourcesPage() {
             {editing === 'new' ? 'New Resource' : 'Edit Resource'}
           </h2>
           <div className="space-y-3">
-            <div className="flex gap-3">
-              <div className="flex-1">
-                <label className="mb-1 block text-xs font-medium text-text-muted">
-                  Title
-                </label>
-                <input
-                  className="w-full rounded-input border border-border bg-background px-3 py-2 text-sm"
-                  value={form.title}
-                  onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-                />
-              </div>
-              <div className="w-24">
-                <label className="mb-1 block text-xs font-medium text-text-muted">
-                  File Type
-                </label>
-                <select
-                  className="w-full rounded-input border border-border bg-background px-3 py-2 text-sm"
-                  value={form.fileType}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, fileType: e.target.value }))
-                  }
-                >
-                  <option>PDF</option>
-                  <option>DOCX</option>
-                  <option>XLSX</option>
-                  <option>PNG</option>
-                </select>
-              </div>
+            <div>
+              <label className="mb-1 block text-xs font-medium text-text-muted">
+                Title
+              </label>
+              <input
+                className="w-full rounded-input border border-border bg-background px-3 py-2 text-sm"
+                value={form.title}
+                onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+              />
             </div>
 
             <div>
@@ -220,34 +207,24 @@ export default function ResourcesPage() {
               />
             </div>
 
-            <div className="flex gap-3">
-              <div className="flex-1">
+            {editing === 'new' && (
+              <div>
                 <label className="mb-1 block text-xs font-medium text-text-muted">
-                  File Name
+                  File
                 </label>
                 <input
-                  className="w-full rounded-input border border-border bg-background px-3 py-2 text-sm"
-                  placeholder="e.g. hipaa-decision-tree.pdf"
-                  value={form.fileName}
+                  type="file"
+                  accept=".pdf,.docx,.xlsx,.png,.jpg,.jpeg"
+                  className="w-full rounded-input border border-border bg-background px-3 py-2 text-sm file:mr-3 file:rounded-button file:border-0 file:bg-primary file:px-3 file:py-1 file:text-xs file:text-white"
                   onChange={(e) =>
-                    setForm((f) => ({ ...f, fileName: e.target.value }))
+                    setForm((f) => ({ ...f, file: e.target.files?.[0] ?? null }))
                   }
                 />
+                {form.file && (
+                  <p className="mt-1 text-xs text-text-muted">{form.file.name} ({(form.file.size / 1024).toFixed(0)} KB)</p>
+                )}
               </div>
-              <div className="flex-1">
-                <label className="mb-1 block text-xs font-medium text-text-muted">
-                  File URL
-                </label>
-                <input
-                  className="w-full rounded-input border border-border bg-background px-3 py-2 text-sm"
-                  placeholder="/resources/filename.pdf or Supabase URL"
-                  value={form.fileUrl}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, fileUrl: e.target.value }))
-                  }
-                />
-              </div>
-            </div>
+            )}
 
             <div>
               <label className="mb-1 block text-xs font-medium text-text-muted">
@@ -269,15 +246,10 @@ export default function ResourcesPage() {
               </select>
             </div>
 
-            <p className="text-xs text-text-muted">
-              File upload to Supabase Storage will be added once the bucket is configured.
-              For now, enter the file URL manually.
-            </p>
-
             <div className="flex gap-2">
               <button
                 onClick={save}
-                disabled={saving || !form.title || !form.fileName || !form.fileUrl || !form.lessonId}
+                disabled={saving || !form.title || !form.lessonId || (editing === 'new' && !form.file)}
                 className="rounded-button bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark disabled:opacity-50"
               >
                 {saving ? 'Saving...' : 'Save'}
