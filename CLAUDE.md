@@ -64,9 +64,29 @@ grow-your-practice/
 
 ## Development Workflow
 
+### Issue-Driven Development
+
+**Every line of committed code must be tied to a GitHub issue.** No exceptions.
+
+**Workflow for each issue:**
+1. **Pick the next issue** — choose the highest-priority unblocked issue from the board.
+2. **Move to In Progress** — update the issue status on the GitHub project board before writing any code.
+3. **Create a branch** — branch off `develop` with the format `issue-{number}-short-description` (e.g., `issue-2-prisma-schema`, `issue-5-sidebar-nav`).
+4. **Work the issue** — commit against it. All commits reference the issue.
+5. **Comment on the issue** if anything unexpected comes up — blockers, scope questions, deviations from the spec, or decisions made during implementation.
+6. **When done** — move the issue to Ready for Review (or whatever the review column is on the board). Open a PR into `develop`.
+7. **Pick the next issue** — check the board for the next highest-priority unblocked issue and repeat from step 1.
+
+**Rules:**
+- Never work on code without an active issue in In Progress.
+- Never have more than one issue In Progress at a time.
+- If an issue is blocked, comment on it explaining the blocker, move it back, and pick the next unblocked issue.
+- If work reveals a new task, create a new GitHub issue for it — don't silently expand scope.
+
 ### Branching
 
 - **Always branch off `develop`** unless the new work depends on an unmerged feature branch.
+- Branch naming: `issue-{number}-short-description` (e.g., `issue-1-scaffold-monorepo`).
 - PR into `develop`. Merge `develop` → `main` for releases.
 
 ### Commit Messages
