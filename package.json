@@ -6,7 +6,11 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "test": "turbo test",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "db:generate": "pnpm --filter @gyp/database db:generate",
+    "db:push": "pnpm --filter @gyp/database db:push",
+    "db:seed": "pnpm --filter @gyp/database db:seed",
+    "db:studio": "pnpm --filter @gyp/database db:studio"
   },
   "devDependencies": {
     "prettier": "^3.4.2",
