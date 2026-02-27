@@ -30,6 +30,9 @@ const MILESTONES: Record<number, { emoji: string; copy: string; dismiss: string 
   },
 }
 
+// TODO: When milestone === 100, call POST /api/newsletter/subscribe with source 'course-complete'
+// to tag the user with gyp-completed in ConvertKit (Issue #19)
+
 export function MilestoneModal({ milestone, onDismiss }: MilestoneModalProps) {
   const data = MILESTONES[milestone]!
   const is100 = milestone === 100
