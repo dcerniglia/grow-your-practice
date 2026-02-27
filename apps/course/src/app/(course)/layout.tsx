@@ -1,9 +1,13 @@
+import { headers } from 'next/headers'
 import { UserMenu } from './user-menu'
 import { Sidebar } from '@/components/sidebar'
 import { MobileNav } from '@/components/mobile-nav'
 import { getModulesWithLessons, getUserProgress, mergeProgressIntoModules, getNextUncompletedLesson } from '@/lib/course-data'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CourseLayout({ children }: { children: React.ReactNode }) {
+  await headers() // ensure dynamic rendering
   const [modules, progress] = await Promise.all([
     getModulesWithLessons(),
     getUserProgress(),
