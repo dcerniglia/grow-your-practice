@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Waitlist — Grow Your Practice</title>
+<meta name="description" content="Be the first to access the only AI course built for licensed therapists in private practice. Save 10+ hours a week, stay HIPAA-compliant, and grow your income.">
+<meta property="og:title" content="Join the Waitlist — Grow Your Practice">
+<meta property="og:description" content="AI training for therapists who want their time back. Join the waitlist for founding member pricing.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../../assets/images/og-image.png">
+<link rel="icon" type="image/svg+xml" href="../../assets/logos/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2D6A6A;
+    --teal-light: #4A9A9A;
+    --teal-lighter: #6BB5B5;
+    --teal-bg: #F0F7F7;
+    --teal-dark: #1E4F4F;
+    --cream: #FDF8F0;
+    --cream-dark: #F5EDE0;
+    --amber: #D4943A;
+    --amber-hover: #C0842E;
+    --amber-light: #F0D4A8;
+    --slate: #1E293B;
+    --slate-soft: #475569;
+    --slate-lighter: #64748B;
+    --white: #FFFFFF;
+    --green-soft: #5B9A7A;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--slate);
+    line-height: 1.7;
+    font-size: 17px;
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ---- Ambient floating particles (dust motes in afternoon light) ---- */
+  .ambient {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .mote {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--amber);
+    border-radius: 50%;
+    opacity: 0;
+    animation: drift linear infinite;
+  }
+  @keyframes drift {
+    0% { opacity: 0; transform: translateY(0) translateX(0); }
+    10% { opacity: 0.18; }
+    50% { opacity: 0.25; }
+    90% { opacity: 0.1; }
+    100% { opacity: 0; transform: translateY(-120vh) translateX(40px); }
+  }
+
+  /* ---- Page wrapper ---- */
+  .page {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 24px;
+  }
+
+  /* ---- Logo ---- */
+  .logo {
+    margin-top: 60px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .logo:hover { opacity: 0.85; }
+  .logo .wordmark {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--teal);
+  }
+  .logo .wordmark .ai { color: var(--amber); }
+
+  /* ---- Hero section ---- */
+  .hero {
+    max-width: 580px;
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.2;
+    color: var(--slate);
+    margin-bottom: 16px;
+    transition: all 0.6s ease;
+  }
+
+  .hero .subtitle {
+    font-size: 1.1rem;
+    color: var(--slate-soft);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.6s ease;
+  }
+
+  /* ---- Email form ---- */
+  .form-wrap {
+    max-width: 440px;
+    margin: 0 auto;
+    transition: all 0.6s ease;
+  }
+  .signup-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .signup-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 2px solid rgba(45, 106, 106, 0.15);
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--white);
+    color: var(--slate);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .signup-input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 4px rgba(45, 106, 106, 0.08);
+  }
+  .signup-input::placeholder { color: var(--slate-lighter); }
+
+  .btn-waitlist {
+    background: var(--amber);
+    color: var(--white);
+    padding: 16px 28px;
+    border-radius: 10px;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(212, 148, 58, 0.25);
+    white-space: nowrap;
+  }
+  .btn-waitlist:hover {
+    background: var(--amber-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(212, 148, 58, 0.35);
+  }
+  .btn-waitlist:active { transform: translateY(0); }
+
+  .form-note {
+    font-size: 0.82rem;
+    color: var(--slate-lighter);
+    text-align: center;
+  }
+
+  .error-msg {
+    color: #DC6B6B;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 8px;
+    display: none;
+  }
+
+  /* ---- Confirmed state ---- */
+  .confirmed-state {
+    display: none;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeUp 0.6s ease;
+  }
+  .confirmed-state.visible {
+    display: block;
+  }
+
+  .confirmed-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .confirmed-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .confirmed-state h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--slate);
+    margin-bottom: 12px;
+  }
+  .confirmed-state p {
+    font-size: 1.05rem;
+    color: var(--slate-soft);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .confirmed-state .inbox-note {
+    display: inline-block;
+    background: var(--teal-bg);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    color: var(--teal-dark);
+    font-weight: 500;
+    border: 1px solid rgba(45, 106, 106, 0.12);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ---- Divider ---- */
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(45, 106, 106, 0.15);
+    margin: 48px auto;
+  }
+
+  /* ---- What you'll learn ---- */
+  .learn {
+    max-width: 520px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .learn-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+  .learn-items {
+    text-align: left;
+    list-style: none;
+  }
+  .learn-items li {
+    padding: 14px 0 14px 32px;
+    position: relative;
+    border-bottom: 1px solid rgba(45, 106, 106, 0.08);
+    font-size: 1rem;
+    color: var(--slate-soft);
+    line-height: 1.6;
+  }
+  .learn-items li:last-child { border-bottom: none; }
+  .learn-items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--teal-bg);
+    border: 2px solid var(--teal-light);
+  }
+
+  /* ---- David note ---- */
+  .david-note {
+    max-width: 480px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .david-note-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .david-note-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 32px;
+    border: 1px solid rgba(45, 106, 106, 0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .david-note-card p {
+    font-size: 0.98rem;
+    color: var(--slate-soft);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .david-note-card p:last-of-type { margin-bottom: 0; }
+  .david-note-card .sig {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--slate);
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    font-size: 0.9rem;
+  }
+
+  /* ---- Bottom CTA ---- */
+  .bottom-cta {
+    max-width: 440px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .bottom-cta .signup-form { justify-content: center; }
+  .bottom-cta .price-hint {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: var(--slate-soft);
+  }
+  .bottom-cta .price-hint strong {
+    color: var(--slate);
+  }
+
+  /* ---- Footer ---- */
+  .waitlist-footer {
+    padding: 40px 24px 32px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--slate-lighter);
+    width: 100%;
+    margin-top: auto;
+  }
+  .waitlist-footer a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .waitlist-footer a:hover { text-decoration: underline; }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 520px) {
+    .logo { margin-top: 40px; }
+    .hero { margin-top: 36px; }
+    .signup-form { flex-direction: column; }
+    .btn-waitlist { width: 100%; padding: 16px; }
+    .bottom-cta .signup-form { flex-direction: column; }
+  }
+
+  /* ---- Transition for page state change ---- */
+  .fade-out {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.4s ease;
+  }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- Ambient particles -->
+<div class="ambient" id="ambient"></div>
+
+<div class="page">
+  <!-- Logo -->
+  <a href="../" class="logo">
+    <svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+      <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+      <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+      <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+    </svg>
+    <span class="wordmark">growyourpractice<span class="ai">.ai</span></span>
+  </a>
+
+  <!-- ======== PRE-SIGNUP STATE ======== -->
+  <div id="pre-signup">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Have a seat. Something good is on the way.</h1>
+      <p class="subtitle">A course that teaches therapists to use AI — ethically, practically, and without the tech overwhelm. We're putting the finishing touches on it now.</p>
+    </section>
+
+    <!-- Email form (top) -->
+    <div class="form-wrap">
+      <form class="signup-form" id="waitlist-form-top">
+        <input type="email" class="signup-input" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn-waitlist">Save My Spot</button>
+      </form>
+      <p class="form-note">No spam. Just a few emails before launch — and first access when doors open.</p>
+      <p class="error-msg" id="error-top"></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- What you'll learn -->
+    <section class="learn">
+      <div class="learn-eyebrow">What you'll learn</div>
+      <ul class="learn-items">
+        <li>How to use AI for notes, intakes, and admin — without violating HIPAA</li>
+        <li>How to fill your caseload using AI-powered marketing you write once</li>
+        <li>How to build new income streams beyond the 1:1 therapy hour</li>
+        <li>A complete AI toolkit built for the way therapists actually work</li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- David's note -->
+    <section class="david-note">
+      <div class="david-note-eyebrow">Why a waitlist?</div>
+      <div class="david-note-card">
+        <p>"I'm building this right now, and I want to get it right. Founding members get the best price and direct access to shape the course. You'll be the first to know when it opens."</p>
+        <div class="sig">— David Cerniglia</div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta">
+      <form class="signup-form" id="waitlist-form-bottom">
+        <input type="email" class="signup-input" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn-waitlist">Save My Spot</button>
+      </form>
+      <p class="price-hint">Founding member pricing: <strong>$297</strong> — it won't stay this low.</p>
+      <p class="error-msg" id="error-bottom"></p>
+    </section>
+
+  </div>
+
+  <!-- ======== POST-SIGNUP STATE ======== -->
+  <div class="confirmed-state" id="confirmed">
+    <div class="confirmed-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FDF8F0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h2>You're in. Make yourself comfortable.</h2>
+    <p>You've secured your spot on the founding member waitlist. I'll send you a few things worth reading before the course opens — starting right now.</p>
+    <div class="inbox-note">Check your inbox — your first email is on the way.</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="waitlist-footer">
+    <p>&copy; 2026 Grow Your Practice &middot; <a href="mailto:david@growyourpractice.ai">Contact</a></p>
+  </footer>
+</div>
+
+<script>
+// ---- Ambient particles ----
+(function() {
+  const ambient = document.getElementById('ambient');
+  const count = 12;
+  for (let i = 0; i < count; i++) {
+    const mote = document.createElement('div');
+    mote.classList.add('mote');
+    const size = 3 + Math.random() * 3;
+    mote.style.width = size + 'px';
+    mote.style.height = size + 'px';
+    mote.style.left = Math.random() * 100 + '%';
+    mote.style.bottom = -(Math.random() * 20) + '%';
+    mote.style.animationDuration = (18 + Math.random() * 22) + 's';
+    mote.style.animationDelay = Math.random() * 20 + 's';
+    ambient.appendChild(mote);
+  }
+})();
+
+// ---- Form handling ----
+// NOTE: Replace this with your ConvertKit form ID and API integration
+// For now this stores to localStorage as a fallback and shows the confirmed state
+
+const CONVERTKIT_FORM_ID = ''; // <-- Add your Kit form ID here
+const CONVERTKIT_API_URL = CONVERTKIT_FORM_ID
+  ? `https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`
+  : '';
+
+async function handleSignup(email, errorEl) {
+  errorEl.style.display = 'none';
+
+  if (CONVERTKIT_API_URL) {
+    // Real ConvertKit integration
+    try {
+      const res = await fetch(CONVERTKIT_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          api_key: '', // <-- Add your Kit public API key here
+          email: email,
+          tags: [] // <-- Add your 'waitlist' tag ID here, e.g. [1234567]
+        })
+      });
+      if (!res.ok) throw new Error('Signup failed');
+    } catch (err) {
+      errorEl.textContent = 'Something went wrong. Please try again.';
+      errorEl.style.display = 'block';
+      return false;
+    }
+  } else {
+    // Fallback: store locally (for testing before Kit is connected)
+    const existing = JSON.parse(localStorage.getItem('gyp_waitlist') || '[]');
+    if (!existing.includes(email)) {
+      existing.push(email);
+      localStorage.setItem('gyp_waitlist', JSON.stringify(existing));
+    }
+    console.log('Waitlist signup (local):', email);
+  }
+  return true;
+}
+
+function showConfirmed() {
+  const preSignup = document.getElementById('pre-signup');
+  const confirmed = document.getElementById('confirmed');
+
+  // Fade out pre-signup
+  preSignup.classList.add('fade-out');
+
+  setTimeout(() => {
+    preSignup.classList.add('hidden');
+    confirmed.classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 400);
+}
+
+// Attach to both forms
+document.querySelectorAll('.signup-form').forEach((form) => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const input = form.querySelector('input[type="email"]');
+    const email = input.value.trim();
+    const errorEl = form.nextElementSibling?.nextElementSibling || form.parentElement.querySelector('.error-msg');
+
+    if (!email) return;
+
+    const btn = form.querySelector('button');
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    const success = await handleSignup(email, errorEl);
+    if (success) {
+      showConfirmed();
+    } else {
+      btn.textContent = 'Save My Spot';
+      btn.disabled = false;
+    }
+  });
+});
+
+// ---- UTM tracking for source tags ----
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get('src') || params.get('utm_source') || '';
+  if (source) {
+    sessionStorage.setItem('gyp_waitlist_source', source);
+  }
+})();
+</script>
+</body>
+</html>
