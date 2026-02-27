@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
+import { supabase, RESOURCE_BUCKET } from '../../../lib/supabase';
 
 export async function GET(request: NextRequest) {
   const moduleId = request.nextUrl.searchParams.get('moduleId');
@@ -25,22 +26,48 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const { title, description, fileName, fileUrl, fileType, lessonId } = body;
+  const formData = await request.formData();
+  const file = formData.get('file') as File | null;
+  const title = formData.get('title') as string;
+  const description = formData.get('description') as string | null;
+  const lessonId = formData.get('lessonId') as string;
 
-  if (!title || !fileName || !fileUrl || !fileType || !lessonId) {
+  if (!title || !lessonId || !file) {
     return NextResponse.json(
-      { error: 'title, fileName, fileUrl, fileType, and lessonId are required' },
+      { error: 'title, lessonId, and file are required' },
       { status: 400 },
     );
   }
+
+  const fileName = file.name;
+  const fileType = fileName.split('.').pop()?.toUpperCase() || 'FILE';
+  const storagePath = `${Date.now()}-${fileName}`;
+
+  const arrayBuffer = await file.arrayBuffer();
+  const { error: uploadError } = await supabase.storage
+    .from(RESOURCE_BUCKET)
+    .upload(storagePath, arrayBuffer, {
+      contentType: file.type,
+      upsert: false,
+    });
+
+  if (uploadError) {
+    return NextResponse.json(
+      { error: `Upload failed: ${uploadError.message}` },
+      { status: 500 },
+    );
+  }
+
+  const { data: urlData } = supabase.storage
+    .from(RESOURCE_BUCKET)
+    .getPublicUrl(storagePath);
 
   const resource = await prisma.resource.create({
     data: {
       title,
       description: description || null,
       fileName,
-      fileUrl,
+      fileUrl: urlData.publicUrl,
       fileType,
       lessonId,
     },
