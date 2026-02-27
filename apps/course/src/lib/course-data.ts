@@ -1,4 +1,11 @@
-import type { SidebarModule, UserProgress, LessonWithModule, NextLessonInfo } from '@gyp/shared'
+import type { SidebarModule, UserProgress, LessonWithModule, NextLessonInfo, LessonResource } from '@gyp/shared'
+
+export type ResourceGroup = {
+  moduleId: string
+  moduleTitle: string
+  iconEmoji: string
+  resources: LessonResource[]
+}
 
 const PLACEHOLDER_CONTENT = `## Welcome to this lesson
 
@@ -242,4 +249,49 @@ export function isModuleUnlocked(
   if (!prevMod) return true
 
   return prevMod.lessons.every((l) => l.completed)
+}
+
+/**
+ * Placeholder resources keyed by module ID.
+ */
+const PLACEHOLDER_RESOURCES: Record<string, LessonResource[]> = {
+  'mod-1': [
+    { id: 'r-1-1', title: 'AI Toolkit Setup Guide', description: 'Step-by-step instructions for setting up your AI tools.', fileType: 'PDF', url: '#' },
+    { id: 'r-1-2', title: 'First Conversation Prompt Templates', description: 'Ready-to-use prompts for your first AI interactions.', fileType: 'PDF', url: '#' },
+  ],
+  'mod-2': [
+    { id: 'r-2-1', title: 'HIPAA Compliance Checklist', description: 'A printable checklist for using AI tools in a HIPAA-compliant way.', fileType: 'PDF', url: '#' },
+    { id: 'r-2-2', title: 'De-identification Quick Reference', description: 'How to remove PHI before using AI tools.', fileType: 'PDF', url: '#' },
+  ],
+  'mod-3': [
+    { id: 'r-3-1', title: 'SOAP Note Prompt Library', description: 'Copy-paste prompts for generating SOAP and DAP notes.', fileType: 'PDF', url: '#' },
+    { id: 'r-3-2', title: 'Treatment Plan Template', description: 'AI-assisted treatment plan starter template.', fileType: 'DOCX', url: '#' },
+  ],
+  'mod-4': [
+    { id: 'r-4-1', title: 'Website Copy Worksheet', description: 'Fill-in-the-blank worksheet for AI-generated website copy.', fileType: 'PDF', url: '#' },
+    { id: 'r-4-2', title: '30-Day Social Media Calendar', description: 'Pre-planned content calendar with AI prompt ideas.', fileType: 'PDF', url: '#' },
+  ],
+  'mod-5': [
+    { id: 'r-5-1', title: 'Income Stream Evaluation Matrix', description: 'Compare and evaluate potential new income streams.', fileType: 'PDF', url: '#' },
+  ],
+  'mod-6': [
+    { id: 'r-6-1', title: '30-Day Implementation Planner', description: 'Daily action items for your first month with AI.', fileType: 'PDF', url: '#' },
+    { id: 'r-6-2', title: 'AI Tools Comparison Sheet', description: 'Side-by-side comparison of recommended AI tools.', fileType: 'PDF', url: '#' },
+  ],
+}
+
+/**
+ * Returns all resources grouped by module for the resources page.
+ */
+export async function getResourcesByModule(): Promise<ResourceGroup[]> {
+  // TODO: When database is running, fetch from Prisma
+  const modules = await getModulesWithLessons()
+  return modules
+    .map((mod) => ({
+      moduleId: mod.id,
+      moduleTitle: mod.title,
+      iconEmoji: mod.iconEmoji || '',
+      resources: PLACEHOLDER_RESOURCES[mod.id] || [],
+    }))
+    .filter((group) => group.resources.length > 0)
 }
