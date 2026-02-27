@@ -15,12 +15,26 @@ export async function syncUser(supabaseUser: SupabaseUser) {
       if (!email) return null
 
       const existing = await prisma.user.findUnique({ where: { email } })
-      if (existing) return existing
+      if (existing) {
+        // Update name/avatar from OAuth metadata if they were previously null
+        const name = supabaseUser.user_metadata?.full_name ?? supabaseUser.user_metadata?.name ?? null
+        const avatarUrl = supabaseUser.user_metadata?.avatar_url ?? null
+        if ((!existing.name && name) || (!existing.avatarUrl && avatarUrl)) {
+          return await prisma.user.update({
+            where: { email },
+            data: {
+              ...((!existing.name && name) ? { name } : {}),
+              ...((!existing.avatarUrl && avatarUrl) ? { avatarUrl } : {}),
+            },
+          })
+        }
+        return existing
+      }
 
       const newUser = await prisma.user.create({
         data: {
           email,
-          name: supabaseUser.user_metadata?.full_name ?? null,
+          name: supabaseUser.user_metadata?.full_name ?? supabaseUser.user_metadata?.name ?? null,
           avatarUrl: supabaseUser.user_metadata?.avatar_url ?? null,
         },
       })
