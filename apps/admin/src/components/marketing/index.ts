@@ -7,3 +7,5 @@ export { EmailPerformanceChart } from './EmailPerformanceChart';
 export { TrafficSourcesChart } from './TrafficSourcesChart';
 export { VariantComparisonChart } from './VariantComparisonChart';
 export { CampaignTable } from './CampaignTable';
+export { FunnelChart } from './FunnelChart';
+export { WeeklyReportCard } from './WeeklyReportCard';
