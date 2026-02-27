@@ -1,3 +1,5 @@
+import { UserMenu } from './user-menu'
+
 export default function CourseLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen">
@@ -7,7 +9,12 @@ export default function CourseLayout({ children }: { children: React.ReactNode }
           <h2 className="font-heading text-lg text-primary">Grow Your Practice</h2>
         </div>
       </aside>
-      <main className="flex-1 p-6">{children}</main>
+      <div className="flex flex-1 flex-col">
+        <header className="flex items-center justify-end border-b border-border bg-surface px-6 py-3">
+          <UserMenu />
+        </header>
+        <main className="flex-1 p-6">{children}</main>
+      </div>
     </div>
-  );
+  )
 }
