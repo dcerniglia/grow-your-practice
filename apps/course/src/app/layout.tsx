@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import './globals.css';
 
@@ -18,6 +18,12 @@ const dmSerifDisplay = DM_Serif_Display({
 export const metadata: Metadata = {
   title: 'Grow Your Practice — Course',
   description: 'Your AI training course for therapists.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

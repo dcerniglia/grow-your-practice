@@ -48,7 +48,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ clientSecret: session.client_secret })
   } catch (error) {
     console.error('Error creating checkout session:', error)
-    const message = error instanceof Error ? error.message : 'Unknown error'
-    return NextResponse.json({ error: message }, { status: 500 })
+    return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 })
   }
 }

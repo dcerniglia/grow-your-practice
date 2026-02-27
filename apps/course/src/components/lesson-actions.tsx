@@ -105,14 +105,14 @@ export function LessonActions({
 
   return (
     <>
-      <div className="mt-12 flex flex-col items-center gap-4 border-t border-border pt-8">
+      <div className="mt-12 flex w-full flex-col items-center gap-4 border-t border-border pt-8">
         <AnimatePresence mode="wait">
           {!completed ? (
             <motion.button
               key="mark-complete"
               onClick={handleMarkComplete}
               disabled={loading}
-              className="rounded-button bg-accent px-8 py-3 text-lg font-semibold text-white shadow-card transition-colors hover:bg-accent-dark disabled:opacity-60"
+              className="w-full rounded-button bg-accent px-8 py-3 text-lg font-semibold text-white shadow-card transition-colors hover:bg-accent-dark disabled:opacity-60 sm:w-auto"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -174,7 +174,7 @@ export function LessonActions({
             >
               <Link
                 href={`/modules/${nextLesson.module.slug}/${nextLesson.lesson.slug}`}
-                className="inline-block rounded-button bg-primary px-6 py-2.5 font-medium text-white transition-colors hover:bg-primary-dark"
+                className="block w-full rounded-button bg-primary px-6 py-2.5 text-center font-medium text-white transition-colors hover:bg-primary-dark sm:inline-block sm:w-auto"
               >
                 Next: {nextLesson.lesson.title} &rarr;
               </Link>
