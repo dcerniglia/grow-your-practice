@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
   const maxOrder = await prisma.module.aggregate({ _max: { order: true } });
   const nextOrder = (maxOrder._max.order ?? 0) + 1;
 
-  const module = await prisma.module.create({
+  const mod = await prisma.module.create({
     data: {
       title,
       slug,
@@ -35,5 +35,5 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  return NextResponse.json(module, { status: 201 });
+  return NextResponse.json(mod, { status: 201 });
 }
