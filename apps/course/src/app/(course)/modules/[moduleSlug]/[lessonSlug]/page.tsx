@@ -45,7 +45,7 @@ export default async function LessonPage({
           {mod.iconEmoji} {mod.title}
         </p>
 
-        <h1 className="font-heading text-3xl text-primary">{lesson.title}</h1>
+        <h1 className="font-heading text-2xl text-primary sm:text-3xl">{lesson.title}</h1>
 
         {lesson.durationMinutes && (
           <p className="mt-1 text-sm text-text-muted">{lesson.durationMinutes} min</p>
@@ -73,7 +73,7 @@ export default async function LessonPage({
               {lesson.resources.map((resource) => (
                 <div
                   key={resource.id}
-                  className="flex items-center justify-between rounded-card bg-surface p-4 shadow-card"
+                  className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-card sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
                     <h3 className="font-medium text-text">{resource.title}</h3>
@@ -88,7 +88,7 @@ export default async function LessonPage({
                     <a
                       href={resource.url}
                       download
-                      className="rounded-button bg-primary px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary-dark"
+                      className="flex-1 rounded-button bg-primary px-3 py-1.5 text-center text-sm font-medium text-white transition-colors hover:bg-primary-dark sm:flex-none"
                     >
                       Download
                     </a>

@@ -72,7 +72,7 @@ export function MobileNav({ modules }: { modules: SidebarModule[] }) {
       <header className="flex items-center justify-between border-b border-border bg-surface px-4 py-3 lg:hidden">
         <button
           onClick={() => setDrawerOpen(true)}
-          className="rounded-button p-1 text-text-muted hover:bg-background hover:text-text"
+          className="flex h-11 w-11 items-center justify-center rounded-button text-text-muted hover:bg-background hover:text-text"
           aria-label="Open menu"
         >
           <HamburgerIcon />
@@ -90,11 +90,11 @@ export function MobileNav({ modules }: { modules: SidebarModule[] }) {
             onClick={() => setDrawerOpen(false)}
           />
           {/* Drawer */}
-          <div className="relative z-10 h-full w-[280px] animate-slide-in">
+          <div className="relative z-10 h-full w-[min(280px,85vw)] animate-slide-in overflow-hidden">
             <div className="absolute right-3 top-3 z-20">
               <button
                 onClick={() => setDrawerOpen(false)}
-                className="rounded-button p-1 text-text-muted hover:bg-background hover:text-text"
+                className="flex h-11 w-11 items-center justify-center rounded-button text-text-muted hover:bg-background hover:text-text"
                 aria-label="Close menu"
               >
                 <CloseIcon />
@@ -108,7 +108,7 @@ export function MobileNav({ modules }: { modules: SidebarModule[] }) {
       )}
 
       {/* Bottom nav bar — mobile only */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around border-t border-border bg-surface py-2 lg:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around border-t border-border bg-surface pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 lg:hidden">
         {bottomNavItems.map((item) => {
           const isActive = item.matchPrefix
             ? pathname.startsWith(item.matchPrefix)
@@ -118,7 +118,7 @@ export function MobileNav({ modules }: { modules: SidebarModule[] }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center gap-0.5 px-3 py-1 text-xs transition-colors ${
+              className={`flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-0.5 px-3 py-1 text-xs transition-colors ${
                 isActive ? 'text-primary' : 'text-text-muted'
               }`}
             >

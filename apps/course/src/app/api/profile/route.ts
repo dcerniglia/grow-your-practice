@@ -31,6 +31,6 @@ export async function GET() {
     })
   } catch (error) {
     console.error('Profile GET error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 })
   }
 }

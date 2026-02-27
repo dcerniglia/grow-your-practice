@@ -71,7 +71,7 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="flex min-h-[80vh] flex-col items-center justify-center">
+    <div className="flex min-h-[80vh] flex-col items-center justify-center px-4">
       {/* Progress dots */}
       <div className="mb-8 flex gap-2">
         {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
@@ -87,7 +87,7 @@ export default function OnboardingPage() {
       {/* Step card */}
       <div
         key={step}
-        className={`w-full max-w-lg rounded-card bg-surface p-8 shadow-card ${
+        className={`w-full max-w-lg rounded-card bg-surface p-5 shadow-card sm:p-8 ${
           direction === 'forward' ? 'animate-fade-in-right' : 'animate-fade-in-left'
         }`}
       >

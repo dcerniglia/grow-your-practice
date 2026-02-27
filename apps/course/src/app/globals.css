@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+}
+
 :root {
   --color-primary: #2D6A6A;
   --color-primary-light: #3A8585;

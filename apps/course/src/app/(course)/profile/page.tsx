@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/lib/auth/use-auth'
+import Link from 'next/link'
 import { PageTransition } from '@/components/page-transition'
 import { AnimatedProgressBar } from '@/components/animated-progress-bar'
+import { EmptyState } from '@/components/empty-state'
 
 type TechComfort = 'beginner' | 'intermediate' | 'comfortable'
 
@@ -127,11 +129,11 @@ export default function ProfilePage() {
             ))}
           </select>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <button
             onClick={handleSave}
             disabled={saving}
-            className="rounded-button bg-primary px-6 py-2.5 font-medium text-white transition-colors hover:bg-primary-dark disabled:opacity-60"
+            className="w-full rounded-button bg-primary px-6 py-2.5 font-medium text-white transition-colors hover:bg-primary-dark disabled:opacity-60 sm:w-auto"
           >
             {saving ? 'Saving...' : 'Save changes'}
           </button>
@@ -140,27 +142,45 @@ export default function ProfilePage() {
       </div>
 
       {/* Progress */}
-      <div className="mt-6 rounded-card bg-surface p-6 shadow-card">
-        <h2 className="mb-4 font-heading text-lg text-text">Progress</h2>
-        <div className="mb-3 flex items-center justify-between">
-          <span className="text-sm text-text-muted">Overall</span>
-          <span className="text-sm font-medium text-primary">{progressPercent}%</span>
-        </div>
-        <AnimatedProgressBar percent={progressPercent} height="h-2.5" className="mb-4" />
-        <div className="grid grid-cols-2 gap-4 text-center">
-          <div className="rounded-card bg-background p-4">
-            <p className="text-2xl font-bold text-primary">{profile?.lessonsCompleted ?? 0}</p>
-            <p className="text-xs text-text-muted">
-              of {profile?.totalLessons ?? 0} lessons
-            </p>
+      <div className="mt-6">
+        {profile && profile.lessonsCompleted === 0 ? (
+          <EmptyState
+            icon="🌱"
+            title="No progress yet"
+            description="You haven't started any lessons yet. Head to the dashboard to begin."
+            action={
+              <Link
+                href="/dashboard"
+                className="inline-block rounded-button bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-dark"
+              >
+                Go to Dashboard
+              </Link>
+            }
+          />
+        ) : (
+          <div className="rounded-card bg-surface p-6 shadow-card">
+            <h2 className="mb-4 font-heading text-lg text-text">Progress</h2>
+            <div className="mb-3 flex items-center justify-between">
+              <span className="text-sm text-text-muted">Overall</span>
+              <span className="text-sm font-medium text-primary">{progressPercent}%</span>
+            </div>
+            <AnimatedProgressBar percent={progressPercent} height="h-2.5" className="mb-4" />
+            <div className="grid grid-cols-2 gap-4 text-center">
+              <div className="rounded-card bg-background p-4">
+                <p className="text-2xl font-bold text-primary">{profile?.lessonsCompleted ?? 0}</p>
+                <p className="text-xs text-text-muted">
+                  of {profile?.totalLessons ?? 0} lessons
+                </p>
+              </div>
+              <div className="rounded-card bg-background p-4">
+                <p className="text-2xl font-bold text-primary">{profile?.modulesCompleted ?? 0}</p>
+                <p className="text-xs text-text-muted">
+                  of {profile?.totalModules ?? 0} modules
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-card bg-background p-4">
-            <p className="text-2xl font-bold text-primary">{profile?.modulesCompleted ?? 0}</p>
-            <p className="text-xs text-text-muted">
-              of {profile?.totalModules ?? 0} modules
-            </p>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* Purchase info */}
@@ -182,7 +202,7 @@ export default function ProfilePage() {
       <div className="mt-6">
         <button
           onClick={signOut}
-          className="rounded-button border border-border px-5 py-2.5 text-sm text-text-muted transition-colors hover:bg-background-dark hover:text-text"
+          className="w-full rounded-button border border-border px-5 py-2.5 text-sm text-text-muted transition-colors hover:bg-background-dark hover:text-text sm:w-auto"
         >
           Sign out
         </button>

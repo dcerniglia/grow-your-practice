@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PageTransition } from './page-transition'
 import { StaggerList, StaggerItem } from './stagger-list'
+import { EmptyState } from './empty-state'
 import type { ResourceGroup } from '@/lib/course-data'
 
 function ResourceDownloadButton({
@@ -16,7 +17,7 @@ function ResourceDownloadButton({
 
   if (!hasUrl) {
     return (
-      <span className="mt-4 inline-block rounded-button bg-border px-4 py-2 text-center text-sm text-text-muted">
+      <span className="mt-4 block w-full rounded-button bg-border px-4 py-2 text-center text-sm text-text-muted sm:inline-block sm:w-auto">
         Coming soon
       </span>
     )
@@ -34,7 +35,7 @@ function ResourceDownloadButton({
       onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-4 inline-flex items-center justify-center gap-2 rounded-button bg-primary px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-primary-dark"
+      className="mt-4 flex w-full items-center justify-center gap-2 rounded-button bg-primary px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-primary-dark sm:inline-flex sm:w-auto"
     >
       <AnimatePresence mode="wait">
         {downloaded ? (
@@ -83,8 +84,12 @@ export function ResourcesClient({ resourcesByModule }: ResourcesClientProps) {
         </p>
 
         {resourcesByModule.length === 0 && (
-          <div className="mt-12 rounded-card bg-surface p-8 text-center shadow-card">
-            <p className="text-text-muted">Resources will appear here as you unlock modules.</p>
+          <div className="mt-12">
+            <EmptyState
+              icon="📁"
+              title="No resources available yet"
+              description="They'll appear here as you progress through the course."
+            />
           </div>
         )}
 
@@ -95,7 +100,7 @@ export function ResourcesClient({ resourcesByModule }: ResourcesClientProps) {
                 <span>{group.iconEmoji}</span>
                 <span>{group.moduleTitle}</span>
               </h2>
-              <StaggerList className="grid gap-4 sm:grid-cols-2">
+              <StaggerList className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {group.resources.map((resource) => (
                   <StaggerItem key={resource.id}>
                     <div className="flex h-full flex-col justify-between rounded-card bg-surface p-5 shadow-card transition-all duration-200 hover:scale-[1.02] hover:shadow-lg">

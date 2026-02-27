@@ -26,7 +26,7 @@ export default async function CourseLayout({ children }: { children: React.React
           <UserMenu />
         </header>
 
-        <main className="flex-1 p-6 pb-20 lg:pb-6">{children}</main>
+        <main className="flex-1 px-4 py-4 pb-24 sm:px-6 sm:py-6 lg:pb-6">{children}</main>
       </div>
     </div>
   )

@@ -40,7 +40,7 @@ export function DashboardClient({
   return (
     <PageTransition>
       <div className="mx-auto max-w-4xl">
-        <h1 className="font-heading text-3xl text-primary">{greeting}, there</h1>
+        <h1 className="font-heading text-2xl text-primary sm:text-3xl">{greeting}, there</h1>
         <p className="mt-2 text-text-muted">{encouragement}</p>
 
         {/* Overall progress */}
@@ -74,7 +74,7 @@ export function DashboardClient({
 
         {/* Module grid */}
         <h2 className="mb-4 mt-10 font-heading text-xl text-text">Modules</h2>
-        <StaggerList className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerList className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {modules.map((mod) => {
             const modCompleted = mod.lessons.filter((l) => l.completed).length
             const modTotal = mod.lessons.length
