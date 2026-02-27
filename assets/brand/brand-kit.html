@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grow Your Practice — Brand Asset Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #F5F0E8; color: #2C2C2C; padding: 40px; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 28px; color: #2D6A6A; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 14px; margin-bottom: 48px; }
+  .section { margin-bottom: 48px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: 20px; color: #2D6A6A; margin-bottom: 4px; }
+  .section .desc { font-size: 13px; color: #888; margin-bottom: 24px; }
+  .asset-row { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+  .asset-card { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); flex: 1; min-width: 280px; }
+  .asset-card.dark { background: #2D6A6A; }
+  .asset-card.cream { background: #FDF8F0; }
+  .asset-card .label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 16px; }
+  .asset-card.dark .label { color: rgba(255,255,255,0.5); }
+  .wordmark { display: flex; align-items: center; gap: 16px; }
+  .wordmark-text { font-family: 'DM Serif Display', serif; font-size: 26px; color: #2D6A6A; white-space: nowrap; }
+  .wordmark-text .ai { color: #D4943A; }
+  .wordmark-text.light-text { color: #FDF8F0; }
+  .wordmark-text.light-text .ai { color: #D4943A; }
+  .wordmark-sm { gap: 10px; }
+  .wordmark-sm .wordmark-text { font-size: 18px; }
+  .wordmark-lg { gap: 20px; }
+  .wordmark-lg .wordmark-text { font-size: 36px; }
+  .icon-display { display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .stacked { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .stacked .wordmark-text { font-size: 22px; }
+  .stacked .tagline { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #64748B; }
+  .stacked.on-dark .tagline { color: #B8D8D8; }
+  .nav-preview { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: rgba(255,255,255,0.95); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
+  .nav-preview .wordmark { gap: 10px; }
+  .nav-preview .wordmark-text { font-size: 18px; }
+  .nav-cta { background: #D4943A; color: white; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; }
+  .footer-preview { background: #1E293B; border-radius: 8px; padding: 24px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-preview .wordmark { gap: 10px; }
+  .footer-preview .wordmark-text { font-size: 16px; color: rgba(255,255,255,0.7); }
+  .footer-preview .wordmark-text .ai { color: #D4943A; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); }
+  .social-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .og-preview { background: #FDF8F0; padding: 40px; text-align: center; border-bottom: 4px solid #2D6A6A; }
+  .og-preview .stacked { margin-bottom: 20px; }
+  .og-preview .og-headline { font-family: 'DM Serif Display', serif; font-size: 20px; color: #1E293B; margin-top: 16px; line-height: 1.4; }
+  .og-preview .og-sub { font-size: 14px; color: #64748B; margin-top: 8px; }
+  .swatches { display: flex; gap: 12px; flex-wrap: wrap; }
+  .swatch { width: 80px; text-align: center; }
+  .swatch-color { width: 80px; height: 56px; border-radius: 8px; margin-bottom: 6px; border: 1px solid rgba(0,0,0,0.08); }
+  .swatch-name { font-size: 10px; font-weight: 600; color: #666; }
+  .swatch-hex { font-size: 10px; color: #999; font-family: monospace; }
+  .type-specimen { margin-bottom: 16px; }
+  .type-specimen .sample { font-size: 32px; color: #1E293B; margin-bottom: 4px; }
+  .type-specimen .meta { font-size: 11px; color: #999; }
+  .favicon-row { display: flex; gap: 24px; align-items: center; }
+  .favicon-box { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .favicon-frame { background: #2D6A6A; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .favicon-label { font-size: 11px; color: #999; }
+  .full-width { width: 100%; }
+  .note { font-size: 12px; color: #999; font-style: italic; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<h1>Grow Your Practice — Brand Asset Kit</h1>
+<p class="subtitle">The Rising Sprout · Concept B · Complete asset reference</p>
+
+<!-- PRIMARY WORDMARK -->
+<div class="section">
+  <h2>Primary Wordmark</h2>
+  <p class="desc">The standard logo as it appears across all touchpoints. Icon + text, always together.</p>
+  <div class="asset-row">
+    <div class="asset-card cream">
+      <div class="label">On cream / light backgrounds</div>
+      <div class="wordmark">
+        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+    </div>
+    <div class="asset-card dark">
+      <div class="label">On teal / dark backgrounds</div>
+      <div class="wordmark">
+        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text light-text">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+    </div>
+  </div>
+  <p class="note">The amber bud at center = the moment of breakthrough. Two teal leaves = established knowledge + new AI skills growing together.</p>
+</div>
+
+<!-- SIZES -->
+<div class="section">
+  <h2>Size Variations</h2>
+  <p class="desc">The wordmark at different scales. Always maintain the icon-to-text proportion.</p>
+  <div class="asset-card cream full-width" style="display: flex; flex-direction: column; gap: 32px;">
+    <div>
+      <div class="label">Large (hero / splash)</div>
+      <div class="wordmark wordmark-lg">
+        <svg width="56" height="56" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text" style="font-size: 36px;">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+    </div>
+    <div>
+      <div class="label">Standard (default)</div>
+      <div class="wordmark">
+        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+    </div>
+    <div>
+      <div class="label">Small (nav / footer)</div>
+      <div class="wordmark wordmark-sm">
+        <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text" style="font-size: 18px;">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ICON ONLY -->
+<div class="section">
+  <h2>Icon Mark Only</h2>
+  <p class="desc">For favicons, app icons, social avatars, and tight spaces where the full wordmark won't fit.</p>
+  <div class="asset-row">
+    <div class="asset-card cream">
+      <div class="label">On light</div>
+      <div class="icon-display">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+          <path d="M38 36 C34 30, 28 22, 24 16" stroke="#FDF8F0" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.4"/>
+          <path d="M40 30 C44 24, 50 16, 54 10" stroke="#FDF8F0" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+    <div class="asset-card dark">
+      <div class="label">On dark</div>
+      <div class="icon-display">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+      </div>
+    </div>
+    <div class="asset-card" style="background: #1E293B;">
+      <div class="label" style="color: rgba(255,255,255,0.4);">On slate</div>
+      <div class="icon-display">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STACKED WORDMARK -->
+<div class="section">
+  <h2>Stacked Wordmark</h2>
+  <p class="desc">For square formats — social avatars, app splash screens, business cards.</p>
+  <div class="asset-row">
+    <div class="asset-card cream" style="text-align: center;">
+      <div class="label">On light</div>
+      <div class="stacked">
+        <svg width="56" height="56" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text" style="font-size: 22px;">growyourpractice<span class="ai">.ai</span></span>
+        <span class="tagline">AI Training for Therapists</span>
+      </div>
+    </div>
+    <div class="asset-card dark" style="text-align: center;">
+      <div class="label">On dark</div>
+      <div class="stacked on-dark">
+        <svg width="56" height="56" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text light-text" style="font-size: 22px;">growyourpractice<span class="ai">.ai</span></span>
+        <span class="tagline" style="color: #B8D8D8;">AI Training for Therapists</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAVICON -->
+<div class="section">
+  <h2>Favicons & App Icons</h2>
+  <p class="desc">Browser tabs, bookmarks, mobile home screens.</p>
+  <div class="asset-card cream full-width">
+    <div class="favicon-row">
+      <div class="favicon-box">
+        <div class="favicon-frame" style="width: 16px; height: 16px; border-radius: 3px;">
+          <svg width="10" height="10" viewBox="0 0 80 80" fill="none">
+            <path d="M40 72 C40 72, 40 42, 40 32" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/>
+            <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+            <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+            <circle cx="40" cy="28" r="7" fill="#D4943A"/>
+          </svg>
+        </div>
+        <span class="favicon-label">16px</span>
+      </div>
+      <div class="favicon-box">
+        <div class="favicon-frame" style="width: 32px; height: 32px; border-radius: 6px;">
+          <svg width="20" height="20" viewBox="0 0 80 80" fill="none">
+            <path d="M40 72 C40 72, 40 42, 40 32" stroke="#FDF8F0" stroke-width="5" stroke-linecap="round"/>
+            <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+            <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+            <circle cx="40" cy="28" r="5" fill="#D4943A"/>
+          </svg>
+        </div>
+        <span class="favicon-label">32px</span>
+      </div>
+      <div class="favicon-box">
+        <div class="favicon-frame" style="width: 64px; height: 64px; border-radius: 12px;">
+          <svg width="40" height="40" viewBox="0 0 80 80" fill="none">
+            <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+            <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+            <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+            <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+          </svg>
+        </div>
+        <span class="favicon-label">64px</span>
+      </div>
+      <div class="favicon-box">
+        <div class="favicon-frame" style="width: 120px; height: 120px; border-radius: 24px;">
+          <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+            <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+            <path d="M40 68 C40 68, 40 42, 40 32" stroke="#FDF8F0" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#FDF8F0"/>
+            <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#B8D8D8"/>
+            <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+          </svg>
+        </div>
+        <span class="favicon-label">Apple Touch (120px)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IN CONTEXT -->
+<div class="section">
+  <h2>In Context</h2>
+  <p class="desc">How the logo looks in actual UI components.</p>
+
+  <div class="asset-card full-width" style="margin-bottom: 16px; padding: 24px;">
+    <div class="label">Navigation bar</div>
+    <div class="nav-preview">
+      <div class="wordmark wordmark-sm">
+        <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text" style="font-size: 18px;">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+      <span class="nav-cta">Enroll Now — $297</span>
+    </div>
+  </div>
+
+  <div class="asset-card full-width" style="padding: 24px;">
+    <div class="label">Footer</div>
+    <div class="footer-preview">
+      <div class="wordmark wordmark-sm">
+        <svg width="24" height="24" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#FDF8F0" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="rgba(255,255,255,0.7)"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text" style="font-size: 16px; color: rgba(255,255,255,0.7);">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+      <span class="footer-copy">© 2026 Grow Your Practice</span>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL MEDIA OG -->
+<div class="section">
+  <h2>Social Share / Open Graph</h2>
+  <p class="desc">How links to growyourpractice.ai appear when shared on social media.</p>
+  <div class="asset-card full-width" style="max-width: 600px;">
+    <div class="label">Open Graph preview (1200×630)</div>
+    <div class="og-preview">
+      <div class="stacked">
+        <svg width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="68" rx="16" ry="3" fill="#2D6A6A" opacity="0.15"/>
+          <path d="M40 68 C40 68, 40 42, 40 32" stroke="#2D6A6A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 38 C36 34, 22 28, 20 20 C18 12, 24 8, 30 10 C36 12, 38 24, 40 32" fill="#2D6A6A"/>
+          <path d="M40 32 C44 28, 56 22, 58 14 C60 6, 54 2, 48 4 C42 6, 40 20, 40 28" fill="#4A8F8F"/>
+          <circle cx="40" cy="28" r="3" fill="#D4943A"/>
+        </svg>
+        <span class="wordmark-text" style="font-size: 28px;">growyourpractice<span class="ai">.ai</span></span>
+      </div>
+      <div class="og-sub">AI Training for Therapists in Private Practice</div>
+      <div class="og-headline">Save 10+ hours a week. Grow your income.<br>No tech skills required.</div>
+    </div>
+  </div>
+</div>
+
+<!-- COLOR PALETTE -->
+<div class="section">
+  <h2>Color Palette</h2>
+  <p class="desc">The Deep Trust palette. Copy hex values directly.</p>
+  <div class="asset-card full-width cream">
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #2D6A6A;"></div>
+        <div class="swatch-name">Teal</div>
+        <div class="swatch-hex">#2D6A6A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #4A8F8F;"></div>
+        <div class="swatch-name">Teal Light</div>
+        <div class="swatch-hex">#4A8F8F</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #1E4F4F;"></div>
+        <div class="swatch-name">Teal Dark</div>
+        <div class="swatch-hex">#1E4F4F</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #F0F7F7;"></div>
+        <div class="swatch-name">Teal BG</div>
+        <div class="swatch-hex">#F0F7F7</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #D4943A;"></div>
+        <div class="swatch-name">Amber</div>
+        <div class="swatch-hex">#D4943A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C0842E;"></div>
+        <div class="swatch-name">Amber Hover</div>
+        <div class="swatch-hex">#C0842E</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FDF8F0;"></div>
+        <div class="swatch-name">Cream</div>
+        <div class="swatch-hex">#FDF8F0</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #1E293B;"></div>
+        <div class="swatch-name">Slate</div>
+        <div class="swatch-hex">#1E293B</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #475569;"></div>
+        <div class="swatch-name">Slate Soft</div>
+        <div class="swatch-hex">#475569</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #64748B;"></div>
+        <div class="swatch-name">Slate Light</div>
+        <div class="swatch-hex">#64748B</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="section">
+  <h2>Typography</h2>
+  <p class="desc">Two fonts. That's it.</p>
+  <div class="asset-card full-width cream">
+    <div class="type-specimen">
+      <div class="sample" style="font-family: 'DM Serif Display', serif;">DM Serif Display</div>
+      <div class="meta">Headings, logo text, hero copy · Regular 400 · Google Fonts</div>
+    </div>
+    <div class="type-specimen" style="margin-top: 24px;">
+      <div class="sample" style="font-family: 'DM Sans', sans-serif; font-weight: 400;">DM Sans</div>
+      <div class="meta">Body text, UI, buttons, captions · 300–700 · Google Fonts</div>
+    </div>
+  </div>
+</div>
+
+<!-- CSS SNIPPET -->
+<div class="section">
+  <h2>CSS Custom Properties</h2>
+  <p class="desc">Drop this into any new page or component to have the full brand system available.</p>
+  <div class="asset-card full-width" style="background: #1E293B; color: #e2e8f0; font-family: monospace; font-size: 13px; line-height: 1.8; white-space: pre; overflow-x: auto;">:root {
+  --teal: #2D6A6A;
+  --teal-light: #4A9A9A;
+  --teal-lighter: #6BB5B5;
+  --teal-bg: #F0F7F7;
+  --teal-dark: #1E4F4F;
+  --cream: #FDF8F0;
+  --cream-dark: #F5EDE0;
+  --amber: #D4943A;
+  --amber-hover: #C0842E;
+  --amber-light: #F0D4A8;
+  --slate: #1E293B;
+  --slate-soft: #475569;
+  --slate-lighter: #64748B;
+  --white: #FFFFFF;
+  --red-soft: #DC6B6B;
+  --green-soft: #5B9A7A;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+}</div>
+</div>
+
+<!-- COPY GUIDELINES -->
+<div class="section">
+  <h2>Voice & Language Guide</h2>
+  <p class="desc">How Grow Your Practice sounds. Reference this for all copy.</p>
+  <div class="asset-row">
+    <div class="asset-card full-width cream">
+      <div class="label">Tone</div>
+      <p style="color: #475569; line-height: 1.7; font-size: 15px;">Warm, knowledgeable, never condescending. Speak to therapists as smart professionals who just haven't had time to learn this yet. Emphasize safety, ethics, and client care alongside business growth. No hype, no hustle culture.</p>
+      <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <div class="label" style="color: #5B9A7A;">✓ Say this</div>
+          <ul style="list-style: none; font-size: 14px; color: #475569; line-height: 2;">
+            <li>Practice (not "business")</li>
+            <li>Clients (not "customers")</li>
+            <li>Grow (not "scale")</li>
+            <li>Streamline (not "optimize")</li>
+            <li>Income streams (not "monetize")</li>
+            <li>Practical (not "disruptive")</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label" style="color: #DC6B6B;">✗ Never say</div>
+          <ul style="list-style: none; font-size: 14px; color: #475569; line-height: 2;">
+            <li>Hustle</li>
+            <li>Grind</li>
+            <li>Scale</li>
+            <li>Hack / life hack</li>
+            <li>Disrupt</li>
+            <li>Leverage (as a verb)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND STORY -->
+<div class="section">
+  <h2>Brand Story</h2>
+  <div class="asset-card cream full-width" style="border-left: 4px solid #2D6A6A; font-style: italic; color: #475569; line-height: 1.8; font-size: 16px;">
+    It's not a rocket. It's not a chart going up and to the right. It's a living thing, growing at its own pace. That's what your practice is — and that's how we think about AI. Not as a disruption, but as a tool that grows with you.
+  </div>
+</div>
+
+</body>
+</html>
