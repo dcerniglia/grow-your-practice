@@ -7,3 +7,8 @@ node_modules/
 *.log
 dist/
 .vercel
+.turbo
+*.tsbuildinfo
+
+# Business docs (not code, backed up separately)
+business/

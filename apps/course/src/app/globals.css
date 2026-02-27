@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #2D6A6A;
+  --color-primary-light: #3A8585;
+  --color-primary-dark: #1F4E4E;
+  --color-background: #FDF8F0;
+  --color-background-dark: #F5EDE0;
+  --color-accent: #D4943A;
+  --color-accent-light: #E8B060;
+  --color-accent-dark: #B07A2E;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B7280;
+  --color-text-light: #9CA3AF;
+  --color-border: #E5E0D8;
+  --color-surface: #FFFFFF;
+}
+
+body {
+  font-family: var(--font-dm-sans), sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-dm-serif-display), serif;
+}
