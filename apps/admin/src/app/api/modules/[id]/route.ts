@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const module = await prisma.module.findUnique({
+  const mod = await prisma.module.findUnique({
     where: { id },
     include: {
       lessons: { orderBy: { order: 'asc' } },
@@ -14,11 +14,11 @@ export async function GET(
     },
   });
 
-  if (!module) {
+  if (!mod) {
     return NextResponse.json({ error: 'Module not found' }, { status: 404 });
   }
 
-  return NextResponse.json(module);
+  return NextResponse.json(mod);
 }
 
 export async function PUT(
@@ -29,7 +29,7 @@ export async function PUT(
   const body = await request.json();
   const { title, slug, description, iconEmoji, isGated } = body;
 
-  const module = await prisma.module.update({
+  const mod = await prisma.module.update({
     where: { id },
     data: {
       ...(title !== undefined && { title }),
@@ -40,7 +40,7 @@ export async function PUT(
     },
   });
 
-  return NextResponse.json(module);
+  return NextResponse.json(mod);
 }
 
 export async function DELETE(

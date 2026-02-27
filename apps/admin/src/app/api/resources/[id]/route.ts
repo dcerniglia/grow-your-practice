@@ -35,7 +35,7 @@ export async function DELETE(
 
   // Extract storage path from public URL
   const urlParts = resource.fileUrl.split(`/${RESOURCE_BUCKET}/`);
-  if (urlParts.length === 2) {
+  if (urlParts.length === 2 && urlParts[1]) {
     const storagePath = urlParts[1];
     await supabase.storage.from(RESOURCE_BUCKET).remove([storagePath]);
   }
