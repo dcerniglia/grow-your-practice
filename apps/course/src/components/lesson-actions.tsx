@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { NextLessonInfo } from '@gyp/shared'
 import { ModuleCompleteToast } from './module-complete-toast'
@@ -59,6 +60,7 @@ export function LessonActions({
   isLastLessonInModule,
   moduleTitle,
 }: LessonActionsProps) {
+  const router = useRouter()
   const [completed, setCompleted] = useState(initialCompleted)
   const [loading, setLoading] = useState(false)
   const [justCompleted, setJustCompleted] = useState(false)
@@ -83,6 +85,9 @@ export function LessonActions({
         setEncouragement(
           ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)] as string,
         )
+
+        // Refresh server components (sidebar, layout) to reflect new progress
+        router.refresh()
 
         // Check for module completion
         if (isLastLessonInModule) {
