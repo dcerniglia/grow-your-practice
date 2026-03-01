@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { PrismaClient } from '@gyp/database'
+
+const prisma = new PrismaClient()
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,35 +21,31 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'moduleId is required' }, { status: 400 })
     }
 
-    // TODO: When database is running, check if all lessons complete and mark module
-    // try {
-    //   const mod = await prisma.module.findUnique({
-    //     where: { id: moduleId },
-    //     include: { lessons: true },
-    //   })
-    //   if (!mod) {
-    //     return NextResponse.json({ error: 'Module not found' }, { status: 404 })
-    //   }
-    //
-    //   const allLessonIds = mod.lessons.map(l => l.id)
-    //   const completedLessons = await prisma.lessonProgress.findMany({
-    //     where: { userId: user.id, lessonId: { in: allLessonIds }, completedAt: { not: null } },
-    //   })
-    //
-    //   if (completedLessons.length === allLessonIds.length) {
-    //     await prisma.moduleProgress.upsert({
-    //       where: { userId_moduleId: { userId: user.id, moduleId } },
-    //       create: { userId: user.id, moduleId, completedAt: new Date() },
-    //       update: { completedAt: new Date() },
-    //     })
-    //   }
-    // } catch (dbError) {
-    //   console.error('Database error:', dbError)
-    //   return NextResponse.json({ error: 'Failed to check module progress' }, { status: 500 })
-    // }
+    try {
+      const mod = await prisma.module.findUnique({
+        where: { id: moduleId },
+        include: { lessons: true },
+      })
+      if (!mod) {
+        return NextResponse.json({ error: 'Module not found' }, { status: 404 })
+      }
 
-    // Placeholder response until database is connected
-    console.log('Module progress check:', { userId: user.id, moduleId })
+      const allLessonIds = mod.lessons.map(l => l.id)
+      const completedCount = await prisma.lessonProgress.count({
+        where: { userId: user.id, lessonId: { in: allLessonIds }, completed: true },
+      })
+
+      if (completedCount === allLessonIds.length) {
+        await prisma.moduleProgress.upsert({
+          where: { userId_moduleId: { userId: user.id, moduleId } },
+          create: { userId: user.id, moduleId, completed: true, completedAt: new Date() },
+          update: { completed: true, completedAt: new Date() },
+        })
+      }
+    } catch (dbError) {
+      console.error('Database error:', dbError)
+      return NextResponse.json({ error: 'Failed to check module progress' }, { status: 500 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {

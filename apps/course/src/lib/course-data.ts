@@ -1,4 +1,8 @@
+import { PrismaClient } from '@gyp/database'
+import { createClient } from '@/lib/supabase/server'
 import type { SidebarModule, UserProgress, LessonWithModule, NextLessonInfo, LessonResource } from '@gyp/shared'
+
+const prisma = new PrismaClient()
 
 export type ResourceGroup = {
   moduleId: string
@@ -150,9 +154,38 @@ export async function getModulesWithLessons(): Promise<SidebarModule[]> {
 /**
  * Returns user progress (completed lesson/module IDs). Falls back to empty progress.
  */
-export async function getUserProgress(_userId?: string): Promise<UserProgress> {
-  // TODO: When database is running, fetch from Prisma here
-  return { completedLessonIds: [], completedModuleIds: [] }
+export async function getUserProgress(userId?: string): Promise<UserProgress> {
+  if (!userId) {
+    try {
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      userId = user?.id
+    } catch {
+      // Not authenticated or supabase unavailable
+    }
+  }
+  if (!userId) return { completedLessonIds: [], completedModuleIds: [] }
+
+  try {
+    const [lessonProgress, moduleProgress] = await Promise.all([
+      prisma.lessonProgress.findMany({
+        where: { userId, completed: true },
+        select: { lessonId: true },
+      }),
+      prisma.moduleProgress.findMany({
+        where: { userId, completed: true },
+        select: { moduleId: true },
+      }),
+    ])
+
+    return {
+      completedLessonIds: lessonProgress.map(lp => lp.lessonId),
+      completedModuleIds: moduleProgress.map(mp => mp.moduleId),
+    }
+  } catch (error) {
+    console.error('Failed to fetch user progress:', error)
+    return { completedLessonIds: [], completedModuleIds: [] }
+  }
 }
 
 /**
